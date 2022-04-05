@@ -1,7 +1,8 @@
-const appRouter = require('express').Router();
+const productRouter = require('express').Router();
+const {
+  createProduct,
+} = require('../controllers/products');
 
-appRouter.post('/',);
-appRouter.get('/',)
-appRouter.get('/products/:id',)
+productRouter.post('/', createProduct);
 
-module.exports = appRouter;
+module.exports = productRouter;

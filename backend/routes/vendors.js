@@ -4,6 +4,6 @@ const {
 } = require('../controllers/vendors');
 
 vendorRouter.post('/', createVendor);
-vendorRouter.get('/', getVendors)
+vendorRouter.get('/', getVendors);
 
 module.exports = vendorRouter;
