@@ -1,11 +1,13 @@
 const appRouter = require('express').Router();
+const {
+  createVendor, getVendors,
+} = require('../controllers/vendors');
 
-const users = require('./users');
-const vendors = require('./vendors');
-const products = require('./products');
+const vendorRouter = require('./vendors');
 
-appRouter.use('/user', users);
-appRouter.use('/vendor', vendors);
-appRouter.use('/product', products);
+appRouter.post('/addvendor', createVendor);
+appRouter.get('/getvendors', getVendors);
+
+appRouter.use(vendorRouter);
 
 module.exports = appRouter;

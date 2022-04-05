@@ -1,6 +1,9 @@
-const appRouter = require('express').Router();
+const vendorRouter = require('express').Router();
+const {
+  createVendor, getVendors,
+} = require('../controllers/vendors');
 
-appRouter.post('/',);
-appRouter.get('/',)
+vendorRouter.post('/', createVendor);
+vendorRouter.get('/', getVendors)
 
-module.exports = appRouter;
+module.exports = vendorRouter;

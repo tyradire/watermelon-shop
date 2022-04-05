@@ -1,7 +1,7 @@
-const appRouter = require('express').Router();
+const userRouter = require('express').Router();
 
-appRouter.post('/signup',);
-appRouter.post('/signin',);
-appRouter.get('/auth',)
+userRouter.post('/signup',);
+userRouter.post('/signin',);
+userRouter.get('/auth',)
 
-module.exports = appRouter;
+module.exports = userRouter;
