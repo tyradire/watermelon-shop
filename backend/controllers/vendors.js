@@ -1,6 +1,7 @@
 const { Vendor } = require('../models/models');
 const ConflictError = require('../errors/ConflictError');
 const CastError = require('../errors/CastError');
+const NotFoundError = require('../errors/NotFoundError');
 
 const createVendor = (req, res, next) => {
   const { name } = req.body;
@@ -17,10 +18,11 @@ const createVendor = (req, res, next) => {
     })
 }
 
-const getVendors = (req, res, next) => {
-  const vendors = Vendor.findAll();
-  return res.json(vendors);
-}
+const getVendors = (req, res, next) => Vendor.findAll()
+  .then((vendors) => {
+    if (!vendors) throw new NotFoundError('Ни одного производителя не найдено');
+    res.status(200).send(vendors);
+  });
 
 module.exports = {
   createVendor, getVendors,
