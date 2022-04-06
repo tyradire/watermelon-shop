@@ -36,16 +36,6 @@ const getProducts = (req, res, next) => {
   });
 }
 
-// const getOneProduct = (req, res, next) => {
-//   const { id } = req.body;
-//   Product.findOne({
-//     where: { id }
-//   })
-//   .then((product) => {
-//     res.status(200).send(product);
-//   })
-// }
-
 const getOneProduct = (req, res, next) => {
   const { id } = req.body;
   Product.findOne({
