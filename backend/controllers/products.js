@@ -1,6 +1,6 @@
 const uuid = require('uuid');
 const path = require('path');
-const { Product, ProductInfo } = require('../models/models');
+const { Product } = require('../models/models');
 const CastError = require('../errors/CastError');
 const NotFoundError = require('../errors/NotFoundError');
 
@@ -36,15 +36,26 @@ const getProducts = (req, res, next) => {
   });
 }
 
+// const getOneProduct = (req, res, next) => {
+//   const { id } = req.body;
+//   Product.findOne({
+//     where: { id }
+//   })
+//   .then((product) => {
+//     res.status(200).send(product);
+//   })
+// }
+
 const getOneProduct = (req, res, next) => {
   const { id } = req.body;
   Product.findOne({
     where: { id }
   })
   .then((product) => {
-    res.status(200).send(product);
+    if (!product) throw new NotFoundError('Продукт с указанным id не найден')
+    res.status(200).send(product)
   })
-
+  .catch(next);
 }
 
 module.exports = {
