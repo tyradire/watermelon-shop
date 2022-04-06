@@ -1,25 +1,52 @@
 const uuid = require('uuid');
 const path = require('path');
-const { Product } = require('../models/models');
+const { Product, ProductInfo } = require('../models/models');
 const CastError = require('../errors/CastError');
+const NotFoundError = require('../errors/NotFoundError');
 
 const createProduct = (req, res, next) => {
-  const { 
-    name, price, vendorId, info 
+  let { 
+    name, info, price, vendorId 
   } = req.body
-  const { img } = req.files
-  let fileName = uuid.v4() + '.jpg'
-  img.mv(path.resolve(__dirname, '..', 'static', fileName))
-  .then((product) => Product.create({
-    name, price, vendorId, img: fileName
-  }))
+  const { img } = req.files;
+  let fileName = uuid.v4() + '.jpg';
+  img.mv(path.resolve(__dirname, '..', 'static', fileName));
+  Product.create({name, info, price, vendorId, img: fileName})
   .then((product) => res.status(200).send({product}))
-  .catch((err) => {
+  .catch((err) => {console.log(err)
     if (err.name === 'ValidationError') next(new CastError('Переданы некорректные данные при создании пользователя'));
     next(err);
   })
 }
 
+const getProducts = (req, res, next) => {
+  const { vendorId } = req.body;
+  if (!vendorId) Product.findAll()
+  .then((products) => {
+    res.status(200).send(products);
+  });
+  Product.findAll({ 
+    where: {
+      vendorId: vendorId
+    }
+  })
+  .then((products) => {
+    console.log('111 ', products);
+    res.status(200).send(products);
+  });
+}
+
+const getOneProduct = (req, res, next) => {
+  const { id } = req.body;
+  Product.findOne({
+    where: { id }
+  })
+  .then((product) => {
+    res.status(200).send(product);
+  })
+
+}
+
 module.exports = {
-  createProduct,
+  createProduct, getProducts, getOneProduct,
 };

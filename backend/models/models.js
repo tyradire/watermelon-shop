@@ -47,6 +47,10 @@ const Product = sequelize.define('product', {
     unique: true, 
     allowNull: false 
   },
+  info: {
+    type: DataTypes.STRING,
+    defaultValue: 'Однолетнее травянистое растение, вид рода Арбуз (Citrullus) семейства Тыквенные (Cucurbitaceae)'
+  },
   price: { 
     type: DataTypes.INTEGER, 
     allowNull: false 
@@ -57,7 +61,7 @@ const Product = sequelize.define('product', {
   },
   img: { 
     type: DataTypes.STRING, 
-    allowNull: false 
+    allowNull: true 
   }
 });
 
@@ -85,22 +89,6 @@ const Rating = sequelize.define('rating', {
   }
 });
 
-const ProductInfo = sequelize.define('product_info', {
-  id: { 
-    type: DataTypes.INTEGER, 
-    primaryKey: true, 
-    autoIncrement: true 
-  },
-  title: { 
-    type: DataTypes.STRING,
-    allowNull: false 
-  },
-  description: { 
-    type: DataTypes.STRING,
-    allowNull: false 
-  }
-});
-
 User.hasOne(Basket);
 Basket.belongsTo(User);
 
@@ -110,24 +98,21 @@ Rating.belongsTo(User);
 Basket.hasMany(BasketProduct);
 BasketProduct.belongsTo(Basket);
 
-Vendor.hasMany(Rating);
-Rating.belongsTo(Product);
-
 Product.hasMany(Rating);
 Rating.belongsTo(Product);
 
 Product.hasMany(BasketProduct);
 BasketProduct.belongsTo(Product);
 
-Product.hasMany(ProductInfo);
-ProductInfo.belongsTo(Product);
+Vendor.hasMany(Product);
+Product.belongsTo(Vendor);
+
 
 module.exports = {
   User, 
   Basket, 
   BasketProduct, 
-  Product, 
-  ProductInfo,
+  Product,
   Vendor, 
   Rating
 };

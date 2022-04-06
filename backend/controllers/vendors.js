@@ -6,8 +6,8 @@ const NotFoundError = require('../errors/NotFoundError');
 const createVendor = (req, res, next) => {
   const { name } = req.body;
   Vendor.findOne({where: {name} })
-    .then((vendorix) => {
-      if (vendorix) throw new ConflictError('Производитель уже зарегистрирован');
+    .then((vendor) => {
+      if (vendor) throw new ConflictError('Производитель уже зарегистрирован');
       return;
     })
     .then((res) => Vendor.create({name}))
