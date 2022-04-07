@@ -6,7 +6,7 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
-const createUser = (req, res, next) => {
+const  createUser = async (req, res, next) => {
   const {
     email, password, role
   } = req.body;
@@ -22,15 +22,17 @@ const createUser = (req, res, next) => {
   .then((hash) => User.create({
     password: hash, email, role,
   }))
-  .then((user) => Basket.create({
-    userId: user.id,
-  }))
-  // .then((user) => res.status(200).send({
-  //   email: user.email, role: user.role, id: user.id,
-  // })) 
-  .catch((err) => {
-    next(err);
-  });
+  .then((user) => {
+    Basket.create({
+      userId: user.id,
+    });
+    return user;
+  })
+  .then((user) => {
+    res.status(200).send({
+    email: user.email, role: user.role, id: user.id,
+  })}) 
+  .catch(next);
 };
 
 const login = (req, res, next) => {
@@ -41,20 +43,19 @@ const login = (req, res, next) => {
       email
     }
   })
-    .then(async (user) => {
-      console.log('тутова ',user)
-      if (!user) throw new UnauthorizedError('Неправильные почта или пароль');
-      return { user, matched: await bcrypt.compare(password, user.password) };
-    })
-    .then(({ user, matched }) => {
-      if (!matched) throw new UnauthorizedError('Неправильные почта или пароль');
-      const token = jwt.sign(
-        { id: user.id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
-      );
-      res.status(200).send({ token });
-    })
-    .catch(next);
+  .then(async (user) => {
+    if (!user) throw new UnauthorizedError('Неправильные почта или пароль');
+    return { user, matched: await bcrypt.compare(password, user.password) };
+  })
+  .then(({ user, matched }) => {
+    if (!matched) throw new UnauthorizedError('Неправильные почта или пароль');
+    const token = jwt.sign(
+      { id: user.id },
+      NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+    );
+    res.status(200).send({ token });
+  })
+  .catch(next);
 };
 
 module.exports = {

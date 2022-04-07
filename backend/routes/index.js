@@ -1,4 +1,5 @@
 const appRouter = require('express').Router();
+const { celebrate, Joi } = require('celebrate');
 const {
   createVendor, getVendors,
 } = require('../controllers/vendors');
@@ -18,7 +19,12 @@ appRouter.get('/getvendors', getVendors);
 appRouter.post('/addproduct', createProduct);
 appRouter.get('/getproducts', getProducts);
 appRouter.get('/getone', getOneProduct);
-appRouter.post('/signup', createUser);
+appRouter.post('/signup', celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required().email(),
+    password: Joi.string().required().min(2),
+  }),
+}), createUser);
 appRouter.post('/signin', login);
 
 appRouter.use(userRouter);
