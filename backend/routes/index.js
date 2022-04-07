@@ -3,10 +3,10 @@ const {
   createVendor, getVendors,
 } = require('../controllers/vendors');
 const {
-  createProduct, getProducts, getOneProduct
+  createProduct, getProducts, getOneProduct,
 } = require('../controllers/products');
 const {
-  createUser,
+  createUser, login,
 } = require('../controllers/users');
 
 const vendorRouter = require('./vendors');
@@ -19,6 +19,7 @@ appRouter.post('/addproduct', createProduct);
 appRouter.get('/getproducts', getProducts);
 appRouter.get('/getone', getOneProduct);
 appRouter.post('/signup', createUser);
+appRouter.post('/signin', login);
 
 appRouter.use(userRouter);
 appRouter.use(vendorRouter);
