@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Auth extends Component {
-  render() {
-    return (
-      <div>
-        Auth
-      </div>
-    );
-  }
+function Auth(props) {
+  return (
+    <div>
+      
+    </div>
+  );
 }
 
 export default Auth;

@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Basket extends Component {
-  render() {
-    return (
-      <div>
-        Basket
-      </div>
-    );
-  }
+function Basket(props) {
+  return (
+    <div>
+      
+    </div>
+  );
 }
 
 export default Basket;
