@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { authRoutes, publicRoutes } from '../routes';
 import { SHOP_ROUTE } from '../utils/consts';
@@ -6,7 +6,7 @@ import { Context } from '../index';
 
 function AppRouter(props) {
 
-  const {user} = createContext(Context);
+  const {user} = useContext(Context);
   console.log(user);
 
   return (
