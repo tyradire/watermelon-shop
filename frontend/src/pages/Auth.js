@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, Form, Button, Row } from 'react-bootstrap';
+import { Container, Card, Form, Button, Col } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/consts';
 import './Auth.css';
@@ -17,34 +17,34 @@ const Auth = () => {
     >
       <Card className='p-5 card'>
         <h2 className='m-auto'>
-          Авторизация
+          {isLogin ? 'Авторизация' : 'Регистрация'}
         </h2>
-        <Form className='m-auto'>
+        <Form className='d-flex flex-column'>
           <Form.Control 
             className='mt-3'
             placeholder='Введите ваш Email'
+            type='email'
           />
           <Form.Control 
             className='mt-3'
             placeholder='Введите ваш пароль'
+            type='password'
           />
-          <Row
-            className='d-flex justify-content-between mt-3 pl-3 pr3'
+          <Col
+            className='d-flex justify-content-between mt-3 pl-3 pr-3'
           >
             {
-              isLogin ? <div>Нет аккаунта? <Link to={REGISTRATION_ROUTE}></Link></div>
+              isLogin ? <div>Нет аккаунта? <Link to={REGISTRATION_ROUTE}>Зарегистрируйся</Link></div>
               : <div>Есть аккаунт? <Link to={LOGIN_ROUTE}>Войти</Link></div>
             }
             <Button
-              className='mt-3 align-self-end'
-              variant='online-success'
+              variant={'outline-success'}
             >
-              Войти
+              {isLogin ? 'Войти' : 'Регистрация'}
             </Button>
-          </Row>
+          </Col>
         </Form>
       </Card>
-
     </Container>
   );
 }
