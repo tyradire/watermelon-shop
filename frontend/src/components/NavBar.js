@@ -8,7 +8,7 @@ import { SHOP_ROUTE, LOGIN_ROUTE } from '../utils/consts';
 const NavBar = observer(() => {
 
   const {user} = useContext(Context);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <Navbar bg="dark" variant="dark">
