@@ -8,7 +8,11 @@ const VendorBar = observer(() => {
   return (
     <ListGroup>
       {product.vendors.map(vendor => 
-        <ListGroup.Item key={vendor.id}>
+        <ListGroup.Item 
+          style={{cursor: 'pointer'}}
+          active={vendor.id === product.selectedVendor.id}
+          onClick={() => product.setSelectedVendor(vendor)}
+          key={vendor.id}>
           {vendor.name}
         </ListGroup.Item>
         )}

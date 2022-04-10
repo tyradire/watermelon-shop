@@ -14,6 +14,7 @@ export default class ProductStore {
       {id: 4, name: 'Квадратный арбуз 4', price: 500, rating: 5, img: "https://i0.wp.com/sadovodu.com/wp-content/uploads/2017/10/kvadratnyy_arbuz_12_26083819.png"},
       {id: 5, name: 'Квадратный арбуз 5', price: 500, rating: 5, img: "https://i0.wp.com/sadovodu.com/wp-content/uploads/2017/10/kvadratnyy_arbuz_12_26083819.png"},
     ]
+    this._selectedVendor = {}
     makeAutoObservable(this)
   }
 
@@ -25,11 +26,19 @@ export default class ProductStore {
     this._products = products;
   }
 
+  setSelectedVendor(vendor) {
+    this._selectedVendor = vendor;
+  }
+
   get vendors() {
     return this._vendors;
   }
 
   get products() {
     return this._products;
+  }
+
+  get selectedVendor() {
+    return this._selectedVendor;
   }
 }
