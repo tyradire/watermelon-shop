@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx';
 
 export default class ProductStore {
   constructor() {
-    this._vendor = [
+    this._vendors = [
       {id: 1, name: 'Арбузиксикс'},
       {id: 2, name: 'Арбузиксиксикс'}
     ]
