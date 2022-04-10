@@ -4,7 +4,8 @@ export default class ProductStore {
   constructor() {
     this._vendors = [
       {id: 1, name: 'Арбузиксикс'},
-      {id: 2, name: 'Арбузиксиксикс'}
+      {id: 2, name: 'Арбузиксиксикс'},
+      {id: 3, name: 'Светикс STYLE'}
     ]
     this._products = [
       {id: 1, name: 'Квадратный арбуз', price: 500, rating: 5, img: "https://i0.wp.com/sadovodu.com/wp-content/uploads/2017/10/kvadratnyy_arbuz_12_26083819.png"},
