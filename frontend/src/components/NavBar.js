@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../index';
 import { Button, Container, Navbar, Nav } from 'react-bootstrap';
-import { SHOP_ROUTE, LOGIN_ROUTE } from '../utils/consts';
+import { SHOP_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE } from '../utils/consts';
 
 const NavBar = observer(() => {
 
@@ -18,8 +18,8 @@ const NavBar = observer(() => {
         </Link>
         {user.isAuth ?
           <Nav className="ml-auto">
-            <Button variant={'outline-light'} >Админ панель</Button>
-            <Button variant={'outline-light'} className="ms-4">Войти</Button>
+            <Button variant={'outline-light'} onClick={() => navigate(ADMIN_ROUTE)} >Админ панель</Button>
+            <Button variant={'outline-light'} onClick={() => navigate(LOGIN_ROUTE)} className="ms-4">Войти</Button>
           </Nav>
           :
           <Nav className="ml-auto">

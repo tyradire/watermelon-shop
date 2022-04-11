@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import like from '../assets/like.svg';
 
 const ProductPage = () => {
@@ -18,15 +18,18 @@ const ProductPage = () => {
         <div>
           {product.info}
         </div>
+        <div className='d-flex ms-2 mt-3 align-items-center'>
+          {product.price} ₽
+          <Button variant={'outline-dark'} className='ms-5 mr-3'>Купить</Button>
+        </div>
+      </Col>
+      <Col md={4}>
         <div 
-          className='d-flex align-items-center justify-content-center mt-2'
+          className='d-flex align-items-center justify-content-center mt-5'
           style={{background: `url(${like}) no-repeat center center`, width: 40, height: 40, backgroundSize: 'contain'}}
         >
           {product.rating}
         </div>
-      </Col>
-      <Col md={4}>
-        {product.price}
       </Col>
     </Container>
   );
