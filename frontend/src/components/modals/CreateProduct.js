@@ -9,7 +9,11 @@ const CreateProduct = ({ show, onHide }) => {
 
   const addInfo = () => {
     setInfo([...info, {title: '', description: '', number: Date.now()}])
-  }
+  };
+
+  const removeInfo = (number) => {
+    setInfo(info.filter(i => i.number !== number))
+  };
 
   return (
     <Modal
@@ -54,7 +58,7 @@ const CreateProduct = ({ show, onHide }) => {
               Добавить новое свойство
             </Button>
             {info.map(i =>
-              <Row>
+              <Row className='mt-3' key={i.number}>
                 <Col md={4}>
                   <Form.Control 
                     placeholder='Введите название свойства'
@@ -68,6 +72,7 @@ const CreateProduct = ({ show, onHide }) => {
                 <Col md={4}>
                   <Button
                     variant='outline-danger'
+                    onClick={() => removeInfo(i.number)}
                   >
                     Удалить
                   </Button>
