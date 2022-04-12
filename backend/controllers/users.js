@@ -8,7 +8,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 const  createUser = async (req, res, next) => {
   const {
-    email, password, role
+    email, password
   } = req.body;
   User.findOne({ 
     where: {
@@ -20,7 +20,7 @@ const  createUser = async (req, res, next) => {
     return bcrypt.hash(password, 10);
   })
   .then((hash) => User.create({
-    password: hash, email, role,
+    password: hash, email,
   }))
   .then((user) => {
     Basket.create({
@@ -32,7 +32,10 @@ const  createUser = async (req, res, next) => {
     res.status(200).send({
     email: user.email, role: user.role, id: user.id,
   })}) 
-  .catch(next);
+  .catch((err) => {
+    console.log('1111111111111111111111', err);
+    next(err);
+  })
 };
 
 const login = (req, res, next) => {

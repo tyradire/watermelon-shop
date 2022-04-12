@@ -1,14 +1,61 @@
-import React from 'react';
-import { Container, Card, Form, Button, Col } from 'react-bootstrap';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/consts';
+import React, { useState, useContext, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
+import { Container, Card } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { LOGIN_ROUTE, SHOP_ROUTE, ERRORS } from '../utils/consts';
+import { register, authorize, getToken } from '../utils/ApiAuth';
+import { Context } from '../index';
 import './Auth.css';
+import Register from '../components/Register';
+import Login from '../components/Login';
 
-const Auth = () => {
+const Auth = observer(() => {
 
+  const {user} = useContext(Context)
   const location = useLocation()
   const navigate = useNavigate();
   const isLogin = location.pathname === LOGIN_ROUTE
+
+  const [registerError, setRegisterError] = useState('');
+  const [loginError, setLoginError] = useState('');
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      getToken(jwt)
+      .then((res) => {
+        user.setIsAuth(true);
+        navigate(SHOP_ROUTE);
+      })
+      .catch(err => console.log(err));
+    }
+  })
+
+  const handleRegisterSubmit = (email, password) => {
+    register(email, password)
+    .then(() => {
+      handleLoginSubmit(email, password);
+    })
+    .catch((err) => {
+      console.log(err);
+      setRegisterError(ERRORS[err]);
+    })
+  }
+
+  const handleLoginSubmit = (email, password) => {
+    authorize(email, password)
+    .then((res) => {
+      localStorage.setItem('jwt', res.token);
+      user.setUser(user);
+      user.setIsAuth(true);
+      navigate(SHOP_ROUTE);
+
+    })
+    .catch((err) => {
+      console.log(err);
+      setLoginError(ERRORS[err]);
+    })
+  }
 
   return (
     <Container
@@ -19,34 +66,12 @@ const Auth = () => {
         <h2 className='m-auto'>
           {isLogin ? 'Авторизация' : 'Регистрация'}
         </h2>
-        <Form className='d-flex flex-column'>
-          <Form.Control 
-            className='mt-3'
-            placeholder='Введите ваш Email'
-            type='email'
-          />
-          <Form.Control 
-            className='mt-3'
-            placeholder='Введите ваш пароль'
-            type='password'
-          />
-          <Col
-            className='d-flex justify-content-between mt-3 pl-3 pr-3'
-          >
-            {
-              isLogin ? <div>Нет аккаунта? <Link to={REGISTRATION_ROUTE}>Зарегистрируйся</Link></div>
-              : <div>Есть аккаунт? <Link to={LOGIN_ROUTE}>Войти</Link></div>
-            }
-            <Button
-              variant={'outline-success'}
-            >
-              {isLogin ? 'Войти' : 'Регистрация'}
-            </Button>
-          </Col>
-        </Form>
+        {
+          isLogin ? <Login onSubmitLogin={handleLoginSubmit} loginError={loginError} /> : <Register onSubmitRegister={handleRegisterSubmit} registerError={registerError} />
+        }
       </Card>
     </Container>
   );
-}
+});
 
 export default Auth;
