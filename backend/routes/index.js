@@ -7,7 +7,7 @@ const {
   createProduct, getProducts, getOneProduct,
 } = require('../controllers/products');
 const {
-  createUser, login,
+  createUser, login, getUser,
 } = require('../controllers/users');
 const {
   verify,
@@ -29,6 +29,7 @@ appRouter.post('/signup', celebrate({
   }),
 }), createUser);
 appRouter.post('/signin', login);
+appRouter.get('/users/me', getUser);
 
 appRouter.use(verify);
 appRouter.use(userRouter);

@@ -32,10 +32,7 @@ const  createUser = async (req, res, next) => {
     res.status(200).send({
     email: user.email, role: user.role, id: user.id,
   })}) 
-  .catch((err) => {
-    console.log('1111111111111111111111', err);
-    next(err);
-  })
+  .catch(next);
 };
 
 const login = (req, res, next) => {
@@ -61,6 +58,15 @@ const login = (req, res, next) => {
   .catch(next);
 };
 
+const getUser = (req, res, next) => {
+  const { id } = req.body;
+  User.findOne({
+    where: { id }
+  })
+  .then(user => res.status(200).send(user))
+  .catch(next);
+}
+
 module.exports = {
-  createUser, login,
+  createUser, login, getUser,
 };
