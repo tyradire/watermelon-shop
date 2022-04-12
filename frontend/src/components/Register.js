@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import { Button, Col, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { REGISTRATION_ROUTE } from '../utils/consts';
+import { LOGIN_ROUTE } from '../utils/consts';
 
-const Register = () => {
+const Register = ({ onSubmitRegister, registerError }) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  
+  const handleSubmit = () => {
+    onSubmitRegister(email, password);
+  }
 
   return (
     <Form className='d-flex flex-column'>
@@ -29,7 +31,7 @@ const Register = () => {
       <Col
         className='d-flex justify-content-between mt-3 pl-3 pr-3'
       >
-        <div>Нет аккаунта? <Link to={REGISTRATION_ROUTE}>Зарегистрируйся</Link></div>
+        <div>Есть аккаунт? <Link to={LOGIN_ROUTE}>Войти</Link></div>
         <Button
           variant={'outline-success'}
           onClick={handleSubmit}

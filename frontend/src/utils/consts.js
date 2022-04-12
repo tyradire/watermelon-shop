@@ -1,4 +1,4 @@
-const ERRORS = {
+export const ERRORS = {
   409: 'Email уже зарегистрирован',
   400: 'Некорректные данные',
   500: 'Ошибка на сервере',
@@ -14,5 +14,3 @@ export const BASKET_ROUTE = '/basket';
 export const PRODUCT_ROUTE = '/product';
 
 export const BASE_URL = 'http://localhost:7000';
-
-export default ERRORS;

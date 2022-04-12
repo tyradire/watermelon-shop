@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import { Button, Col, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { LOGIN_ROUTE } from '../utils/consts';
+import { REGISTRATION_ROUTE } from '../utils/consts';
 
-const Login = () => {
+const Login = ({ onSubmitLogin, loginError }) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const handleSubmit = () => {
-    
+    onSubmitLogin(email, password);
   }
 
   return (
@@ -31,12 +31,12 @@ const Login = () => {
       <Col
         className='d-flex justify-content-between mt-3 pl-3 pr-3'
       >
-        <div>Есть аккаунт? <Link to={LOGIN_ROUTE}>Войти</Link></div>
+        <div>Нет аккаунта? <Link to={REGISTRATION_ROUTE}>Зарегистрируйся</Link></div>
         <Button
           variant={'outline-success'}
           onClick={handleSubmit}
         >
-          {isLogin ? 'Войти' : 'Регистрация'}
+          Войти
         </Button>
       </Col>
     </Form>
