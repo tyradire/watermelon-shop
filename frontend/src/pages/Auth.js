@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Container, Card } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -19,17 +19,17 @@ const Auth = observer(() => {
   const [registerError, setRegisterError] = useState('');
   const [loginError, setLoginError] = useState('');
 
-  useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      getToken(jwt)
-      .then((res) => {
-        user.setIsAuth(true);
-        navigate(SHOP_ROUTE);
-      })
-      .catch(err => console.log(err));
-    }
-  })
+  // useEffect(() => {
+  //   const jwt = localStorage.getItem('jwt');
+  //   if (jwt) {
+  //     getToken(jwt)
+  //     .then((res) => {
+  //       user.setIsAuth(true);
+  //       navigate(SHOP_ROUTE);
+  //     })
+  //     .catch(err => console.log(err));
+  //   }
+  // })
 
   const handleRegisterSubmit = (email, password) => {
     register(email, password)
@@ -45,8 +45,9 @@ const Auth = observer(() => {
   const handleLoginSubmit = (email, password) => {
     authorize(email, password)
     .then((res) => {
-      localStorage.setItem('jwt', res.token);
+      // localStorage.setItem('jwt', res.token);
       user.setUser(user);
+      console.log(user)
       user.setIsAuth(true);
       navigate(SHOP_ROUTE);
 
