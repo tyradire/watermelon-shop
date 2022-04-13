@@ -14,7 +14,7 @@ export default class ProductStore {
     makeAutoObservable(this)
   }
 
-  setVendor(vendors) {
+  setVendors(vendors) {
     this._vendors = vendors;
   }
 

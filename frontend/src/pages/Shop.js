@@ -8,10 +8,13 @@ import { getVendors } from '../utils/VendorApi';
 import {Context} from "../index";
 
 const Shop = observer(() => {
-  const {vendor} = useContext(Context)
+  const {product} = useContext(Context)
 
   useEffect(() => {
-    getVendors().then(data => vendor.setVendors(data))
+    getVendors().then(data => {
+      console.log('data api ', data);
+      console.log('product ', product);
+      product.setVendors(data)})
   }, [])
 
   return (
