@@ -11,7 +11,7 @@ const ProductItem = ({ product }) => {
   return (
     <Col md={3} className='mt-1' onClick={() => navigate(PRODUCT_ROUTE + '/' + product.id)}>
       <Card style={{width: 150, cursor: 'pointer'}} border={'light'}>
-        <Image width={150} height={150} src={product.img}/>
+        <Image width={150} height={150} src={process.env.REACT_APP_PUBLIC_URL + product.img}/>
         <div className='text-black-50 mt-1 d-flex justify-content-between align-items-center'>
           <div>Арбузикс</div>
           <div className='d-flex align-items-center'>

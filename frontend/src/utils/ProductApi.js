@@ -13,13 +13,12 @@ export const createProduct = ( product ) => {
   })
 }
 
-export const getProducts = ( vendorId ) => {
+export const getProducts = () => {
   return fetch(`${BASE_URL}/getproducts`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ vendorId })
+    }
   })
   .then((response) => {
     return checkResponse(response);

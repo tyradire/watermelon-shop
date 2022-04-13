@@ -11,10 +11,8 @@ const Shop = observer(() => {
   const {product} = useContext(Context)
 
   useEffect(() => {
-    getVendors().then(data => {
-      console.log('data api ', data);
-      console.log('product ', product);
-      product.setVendors(data)})
+    getVendors().then(data => product.setVendors(data))
+    getProducts().then(data => product.setProducts(data))
   }, [])
 
   return (
