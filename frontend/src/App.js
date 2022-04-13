@@ -2,13 +2,15 @@ import { observer } from 'mobx-react-lite';
 import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Context } from './index';
-import AppRouter from './components/AppRouter';
-import NavBar from './components/NavBar';
 import { getToken } from './utils/ApiAuth';
+import Spinner from './components/Spinner/Spinner';
+import Main from './components/Main';
+
 
 const App = observer(() => {
 
   const {user} = useContext(Context);
+  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -19,15 +21,16 @@ const App = observer(() => {
         user.setIsAuth(true);
       })
       .catch(err => console.log(err))
-    }
+      .finally(() => setLoading(false))
+    } else setLoading(false);
   }, []);
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <AppRouter />
+      { loading ? <Spinner /> : <Main /> }
     </BrowserRouter>
   );
+
 });
 
 export default App;
