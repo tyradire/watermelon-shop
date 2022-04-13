@@ -9,7 +9,7 @@ import { getToken } from './utils/ApiAuth';
 const App = observer(() => {
 
   const {user} = useContext(Context);
-
+  
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {

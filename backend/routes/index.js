@@ -29,9 +29,10 @@ appRouter.post('/signup', celebrate({
   }),
 }), createUser);
 appRouter.post('/signin', login);
-appRouter.get('/users/me', getUser);
+
 
 appRouter.use(verify);
+appRouter.get('/users/me', getUser);
 appRouter.use(userRouter);
 appRouter.use(vendorRouter);
 appRouter.use(productRouter);

@@ -3,10 +3,11 @@ const jwt = require('jsonwebtoken');
 const { User, Basket } = require('../models/models');
 const ConflictError = require('../errors/ConflictError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
+const NotFoundError = require('../errors/NotFoundError');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
-const  createUser = async (req, res, next) => {
+const  createUser = (req, res, next) => {
   const {
     email, password
   } = req.body;
@@ -59,11 +60,14 @@ const login = (req, res, next) => {
 };
 
 const getUser = (req, res, next) => {
-  const { id } = req.body;
+  const id = req.user.id;
   User.findOne({
     where: { id }
   })
-  .then(user => res.status(200).send(user))
+  .then((user) => {
+    if (!user) throw new NotFoundError('Продукт с указанным id не найден')
+    res.status(200).send(user)
+  })
   .catch(next);
 }
 

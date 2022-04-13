@@ -19,17 +19,17 @@ const Auth = observer(() => {
   const [registerError, setRegisterError] = useState('');
   const [loginError, setLoginError] = useState('');
 
-  useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      getToken(jwt)
-      .then((res) => {
-        user.setIsAuth(true);
-        navigate(SHOP_ROUTE);
-      })
-      .catch(err => console.log(err));
-    }
-  })
+  // useEffect(() => {
+  //   const jwt = localStorage.getItem('jwt');
+  //   if (jwt) {
+  //     getToken(jwt)
+  //     .then((res) => {
+  //       user.setIsAuth(true);
+  //       navigate(SHOP_ROUTE);
+  //     })
+  //     .catch(err => console.log(err));
+  //   }
+  // }, [])
 
   const handleRegisterSubmit = (email, password) => {
     register(email, password)
