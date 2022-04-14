@@ -21,7 +21,7 @@ appRouter.post('/addvendor', createVendor);
 appRouter.get('/getvendors', getVendors);
 appRouter.post('/addproduct', createProduct);
 appRouter.get('/getproducts', getProducts);
-appRouter.get('/getone', getOneProduct);
+appRouter.get('/getone/:id', getOneProduct);
 appRouter.post('/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),

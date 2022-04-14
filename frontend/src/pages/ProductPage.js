@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import { getOneProduct } from '../utils/ProductApi';
 import like from '../assets/like.svg';
+import { useParams } from 'react-router-dom';
 
 const ProductPage = () => {
 
-  const product = {id: 1, name: 'Квадратный арбуз', price: 500, rating: 5, info: 'Однолетнее травянистое растение, вид рода Арбуз (Citrullus) семейства Тыквенные (Cucurbitaceae)', img: "https://i0.wp.com/sadovodu.com/wp-content/uploads/2017/10/kvadratnyy_arbuz_12_26083819.png"}
+  const [product, setProduct] = useState({info: []});
+  const {id} = useParams();
+
+  useEffect(() => {
+    getOneProduct(id).then(data => setProduct(data))
+  }, []);
 
   return (
     <Container className='mt-5 d-flex'>
       <Col md={4}>
-        <Image width={300} height={300} src={product.img}/>
+        <Image width={300} height={300} src={process.env.REACT_APP_PUBLIC_URL + product.img}/>
       </Col>
       <Col md={4} className='mt-4'>
         <Row className='d-flex flex-column align-items-center'>

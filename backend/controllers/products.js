@@ -37,7 +37,7 @@ const getProducts = (req, res, next) => {
 }
 
 const getOneProduct = (req, res, next) => {
-  const id = req.user.id;
+  const id = req.params.id;
   Product.findOne({
     where: { id }
   })

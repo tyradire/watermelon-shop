@@ -30,8 +30,7 @@ export const getOneProduct = ( id ) => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ id })
+    }
   })
   .then((response) => {
     return checkResponse(response);
