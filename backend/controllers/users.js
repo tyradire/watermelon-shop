@@ -65,7 +65,7 @@ const getUser = (req, res, next) => {
     where: { id }
   })
   .then((user) => {
-    if (!user) throw new NotFoundError('Продукт с указанным id не найден')
+    if (!user) throw new NotFoundError('Пользователь с указанным id не найден')
     res.status(200).send(user)
   })
   .catch(next);

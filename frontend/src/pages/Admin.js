@@ -12,8 +12,8 @@ const Admin = () => {
     <Container className='d-flex flex-column'>
       <Button variant='outline-dark' className='mt-4 p2' onClick={() => setVendorVisible(true)} >Добавить производителя</Button>
       <Button variant='outline-dark' className='mt-4 p2' onClick={() => setProductVisible(true)} >Добавить продукт</Button>
-      <CreateProduct show={productVisible} onHide={() => setVendorVisible(false)} />
-      <CreateVendor show={vendorVisible} onHide={() => setProductVisible(false)}/>
+      <CreateVendor show={vendorVisible} onHide={() => setVendorVisible(false)}/>
+      <CreateProduct show={productVisible} onHide={() => setProductVisible(false)}/>
     </Container>
   );
 };

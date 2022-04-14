@@ -4,6 +4,7 @@ const CastError = require('../errors/CastError');
 const NotFoundError = require('../errors/NotFoundError');
 
 const createVendor = (req, res, next) => {
+  console.log(req.body);
   const { name } = req.body;
   Vendor.findOne({where: {name} })
     .then((vendor) => {

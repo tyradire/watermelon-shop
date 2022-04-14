@@ -1,12 +1,12 @@
 import { BASE_URL } from './consts';
 
-export const createVendor = ( vendor ) => {
+export const createVendor = ({ name }) => {
   return fetch(`${BASE_URL}/addvendor`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ vendor })
+    body: JSON.stringify({ name })
   })
   .then((response) => {
     return checkResponse(response);
