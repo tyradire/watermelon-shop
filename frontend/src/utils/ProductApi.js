@@ -1,12 +1,13 @@
 import { BASE_URL } from './consts';
 
-export const createProduct = ( product ) => {
+export const createProduct = (product) => {
+  
   return fetch(`${BASE_URL}/addproduct`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ product })
+    // headers: {
+    //   'Content-Type': 'application/json'
+    // },
+    body: product
   })
   .then((response) => {
     return checkResponse(response);

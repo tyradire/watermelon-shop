@@ -5,13 +5,14 @@ const CastError = require('../errors/CastError');
 const NotFoundError = require('../errors/NotFoundError');
 
 const createProduct = (req, res, next) => {
+  console.log('313', req.body);
   let { 
-    name, info, price, vendorId 
+    name, price, vendorId, info
   } = req.body
   const { img } = req.files;
   let fileName = uuid.v4() + '.jpg';
   img.mv(path.resolve(__dirname, '..', 'static', fileName));
-  Product.create({name, info, price, vendorId, img: fileName})
+  Product.create({name, price, vendorId, info, img: fileName})
   .then((product) => res.status(200).send({product}))
   .catch((err) => {console.log(err)
     if (err.name === 'ValidationError') next(new CastError('Переданы некорректные данные при создании пользователя'));
