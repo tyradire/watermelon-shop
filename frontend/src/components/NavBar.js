@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../index';
 import { Button, Container, Navbar, Nav } from 'react-bootstrap';
 import { SHOP_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE } from '../utils/consts';
-import './NavBar.css';
+import BasketContainer from './BasketContainer';
 
 const NavBar = observer(() => {
 
@@ -17,10 +17,6 @@ const NavBar = observer(() => {
     user.setIsAuth(false);
   }
 
-  const handleMouseEnter = () => {
-    console.log('корзина')
-  }
-
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -29,10 +25,7 @@ const NavBar = observer(() => {
         </Link>
         {user.isAuth ?
           <Nav>
-            <div className='basket'>
-              <div className='basket-btn' onMouseEnter={() => handleMouseEnter()}></div>
-              <div className='basket-content'></div>
-            </div>
+            <BasketContainer />
             <Button variant={'outline-light'} onClick={() => navigate(ADMIN_ROUTE)} className="ms-2" >Админ панель</Button>
             <Button variant={'outline-light'} onClick={() => signOut()} className="ms-4">Выйти</Button>
           </Nav>
