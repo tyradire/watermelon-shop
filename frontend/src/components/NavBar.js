@@ -18,16 +18,16 @@ const NavBar = observer(() => {
   }
 
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar className='p-0' bg="dark" variant="dark">
       <Container>
         <Link className="text-decoration-none text-white" to={SHOP_ROUTE}>
           Watermelon Shop
         </Link>
         {user.isAuth ?
-          <Nav>
+          <Nav >
             <BasketContainer />
-            <Button variant={'outline-light'} onClick={() => navigate(ADMIN_ROUTE)} className="ms-2" >Админ панель</Button>
-            <Button variant={'outline-light'} onClick={() => signOut()} className="ms-4">Выйти</Button>
+            <Button variant={'outline-light'} onClick={() => navigate(ADMIN_ROUTE)} className="ms-2 m-2" >Админ панель</Button>
+            <Button variant={'outline-light'} onClick={() => signOut()} className="ms-2 m-2">Выйти</Button>
           </Nav>
           :
           <Nav>

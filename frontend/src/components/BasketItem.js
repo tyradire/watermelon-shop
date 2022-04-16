@@ -8,7 +8,7 @@ const BasketItem = () => {
       <img alt={'product'} src={seer}/>
       <p className='product__title'>Сыр Arla Nature Сливочный 45% 400г</p>
       <p className='product__count'>1 шт</p>
-      <p className='product__price'>200 Р</p> 
+      <p className='product__price'>200 &#8381;</p> 
     </div>
   );
 };
