@@ -2,16 +2,16 @@ import React from 'react';
 import './BasketContainer.css';
 import BasketItem from './BasketItem';
 import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { BASKET_ROUTE } from '../utils/consts';
 
 const BasketContainer = () => {
 
-  const handleMouseEnter = () => {
-    console.log('корзина')
-  }
+  const navigate = useNavigate();
 
   return (
     <div className='basket'>
-      <div className='basket__btn' onMouseEnter={() => handleMouseEnter()}></div>
+      <div className='basket__btn' ></div>
       <div className='basket__content'>
         <span className='basket__arrow'></span>
         <div className='basket__products'>
@@ -29,7 +29,7 @@ const BasketContainer = () => {
             <p className='footer__description-price'>Общая сумма</p>
             <p className='footer__price'>3000 &#8381;</p>
           </div>
-          <Button className='h-75' variant="outline-success" size="sm">В корзину</Button>
+          <Button className='h-75' variant="outline-success" size="sm" onClick={() => navigate(BASKET_ROUTE)}>В корзину</Button>
         </div>
       </div>
     </div>
