@@ -11,15 +11,25 @@ const Shop = observer(() => {
   const {product} = useContext(Context)
 
   useEffect(() => {
-    getVendors().then(data => product.setVendors(data))
-    getProducts().then(data => product.setProducts(data))
+    Promise.all([getVendors(), getProducts(null)])
+    .then(([ vendors, prosucts ]) => {
+      product.setVendors(vendors)
+      product.setProducts(prosucts)
+      
+    })
+    //.catch(err => {
+    
   }, [])
+
+  useEffect(() => {
+    getProducts(product.selectedVendor.id).then(data => product.setProducts(data))
+  }, [product.selectedVendor])
 
   return (
     <Container>
       <Row className='mt-3'>
         <Col md={3} className='mt-2'>
-          <VendorBar/>
+          <VendorBar />
         </Col>
         <Col md={9}>
           <ProductList />

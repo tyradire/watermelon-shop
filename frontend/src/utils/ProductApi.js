@@ -15,6 +15,7 @@ export const createProduct = (product) => {
 }
 
 export const getProducts = () => {
+
   return fetch(`${BASE_URL}/getproducts`, {
     method: 'GET',
     headers: {
@@ -27,6 +28,7 @@ export const getProducts = () => {
 }
 
 export const getOneProduct = ( id ) => {
+  
   return fetch(`${BASE_URL}/getone/` + id, {
     method: 'GET',
     headers: {

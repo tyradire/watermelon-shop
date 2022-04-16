@@ -2,14 +2,14 @@ import { makeAutoObservable } from 'mobx';
 
 export default class ProductStore {
   constructor() {
-    this._vendors = []
+    this._vendors = {};
     this._products = []
     this._selectedVendor = {}
     makeAutoObservable(this)
   }
 
   setVendors(vendors) {
-    this._vendors = vendors;
+    vendors.forEach(vendor => {this._vendors[vendor.id] = vendor.name});
   }
 
   setProducts(products) {

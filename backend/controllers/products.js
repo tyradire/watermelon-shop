@@ -21,7 +21,7 @@ const createProduct = (req, res, next) => {
 }
 
 const getProducts = (req, res, next) => {
-  const { vendorId } = req.body;
+  const vendorId = req.body.id;
   if (!vendorId) Product.findAll()
   .then((products) => {
     res.status(200).send(products);
@@ -32,7 +32,6 @@ const getProducts = (req, res, next) => {
     }
   })
   .then((products) => {
-    console.log('111 ', products);
     res.status(200).send(products);
   });
 }
