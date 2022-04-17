@@ -1,0 +1,11 @@
+.product-item__image {
+  border-radius: 4px 4px 0 0;
+}
+
+.product-item__product-name {
+  font-size: 16px;
+}
+
+.product-item__vendor-name {
+  font-size: 13px;
+}

@@ -7,6 +7,9 @@ const {
   createProduct, getProducts, getOneProduct,
 } = require('../controllers/products');
 const {
+  addBasketProduct,
+} = require('../controllers/baskets');
+const {
   createUser, login, getUser,
 } = require('../controllers/users');
 const {
@@ -16,6 +19,7 @@ const {
 const vendorRouter = require('./vendors');
 const productRouter = require('./products');
 const userRouter = require('./users');
+const basketRouter = require('./baskets');
 
 appRouter.post('/addvendor', createVendor);
 appRouter.get('/getvendors', getVendors);
@@ -33,8 +37,10 @@ appRouter.post('/signin', login);
 
 appRouter.use(verify);
 appRouter.get('/users/me', getUser);
+appRouter.post('/addtobasket/:id', addBasketProduct);
 appRouter.use(userRouter);
 appRouter.use(vendorRouter);
 appRouter.use(productRouter);
+appRouter.use(basketRouter);
 
 module.exports = appRouter;
