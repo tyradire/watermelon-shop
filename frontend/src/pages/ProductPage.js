@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { getOneProduct } from '../utils/ProductApi';
+import { addToBasket } from '../utils/BasketApi';
 import like from '../assets/like.svg';
 import { useParams } from 'react-router-dom';
 
@@ -8,6 +9,12 @@ const ProductPage = () => {
 
   const [product, setProduct] = useState({info: []});
   const {id} = useParams();
+
+  const addProduct = () => {
+    addToBasket(id)
+    .then(product => console.log(product, ' успешно добавлен'))
+    .catch(err => console.log(err, ' не добавлен'));
+  }
 
   useEffect(() => {
     getOneProduct(id).then(data => setProduct(data))
@@ -27,7 +34,7 @@ const ProductPage = () => {
         </div>
         <div className='d-flex ms-2 mt-3 align-items-center'>
           {product.price} ₽
-          <Button variant={'outline-dark'} className='ms-5 mr-3'>Купить</Button>
+          <Button variant={'outline-dark'} className='ms-5 mr-3' onClick={addProduct}>Купить</Button>
         </div>
       </Col>
       <Col md={4}>
