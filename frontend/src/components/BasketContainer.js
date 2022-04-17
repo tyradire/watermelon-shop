@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './BasketContainer.css';
 import BasketItem from './BasketItem';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { BASKET_ROUTE } from '../utils/consts';
+import { getBasketProducts } from '../utils/BasketApi';
 
 const BasketContainer = () => {
 
   const navigate = useNavigate();
+
+  const [basket, setBasket] = useState([]);
+
+  useEffect(() => {
+    console.log('sssssssssss ');
+    getBasketProducts()
+    .then(products => setBasket(products.product))
+    .catch(err => console.log(err));
+  }, [])
 
   return (
     <div className='basket'>
@@ -15,14 +25,12 @@ const BasketContainer = () => {
       <div className='basket__content'>
         <span className='basket__arrow'></span>
         <div className='basket__products'>
-          <BasketItem />
-          <BasketItem />
-          <BasketItem />
-          <BasketItem />
-          <BasketItem />
-          <BasketItem />
-          <BasketItem />
-          <BasketItem />
+
+          {basket.map(item => 
+         
+          <BasketItem key={item.id} product={item.product} />
+      
+      )}
         </div>
         <div className='basket__footer d-flex justify-content-between align-items-center'>
           <div>

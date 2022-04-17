@@ -7,7 +7,7 @@ const {
   createProduct, getProducts, getOneProduct,
 } = require('../controllers/products');
 const {
-  addBasketProduct,
+  addBasketProduct, getBasketProducts,
 } = require('../controllers/baskets');
 const {
   createUser, login, getUser,
@@ -34,10 +34,10 @@ appRouter.post('/signup', celebrate({
 }), createUser);
 appRouter.post('/signin', login);
 
-
 appRouter.use(verify);
 appRouter.get('/users/me', getUser);
 appRouter.post('/addtobasket/:id', addBasketProduct);
+appRouter.get('/getbasketproducts', getBasketProducts);
 appRouter.use(userRouter);
 appRouter.use(vendorRouter);
 appRouter.use(productRouter);

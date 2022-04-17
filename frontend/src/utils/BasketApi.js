@@ -13,6 +13,20 @@ export const addToBasket = (id) => {
   })
 }
 
+export const getBasketProducts = () => {
+
+  return fetch(`${BASE_URL}/getbasketproducts`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': localStorage.getItem('jwt'),
+    }
+  })
+  .then((response) => {
+    return checkResponse(response);
+  })
+}
+
 const checkResponse = (response) => {
   return response.ok ? response.json() : Promise.reject(response);
 }
