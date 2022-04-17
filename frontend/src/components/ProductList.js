@@ -8,10 +8,13 @@ const ProductList = observer(() => {
 
   const { product } = useContext(Context)
 
+
   return (
     <Row className='d-flex'>
       {product.products.map(item => 
-        <ProductItem key={item.id} product={item} vendor={product.vendors[item.vendorId]} />
+         item.vendorId === ( Number(product.selectedVendor.id) || item.vendorId ) ?
+          <ProductItem key={item.id} product={item} vendor={product.vendors[item.vendorId]}/>
+        : ''
       )}
     </Row>
   );

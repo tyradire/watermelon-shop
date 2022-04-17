@@ -11,11 +11,10 @@ const Shop = observer(() => {
   const {product} = useContext(Context)
 
   useEffect(() => {
-    Promise.all([getVendors(), getProducts(null)])
-    .then(([ vendors, prosucts ]) => {
+    Promise.all([getVendors(), getProducts()])
+    .then(([ vendors, products ]) => {
       product.setVendors(vendors)
-      product.setProducts(prosucts)
-      
+      product.setProducts(products)
     })
     //.catch(err => {
     
