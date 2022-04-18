@@ -4,6 +4,11 @@
   border-bottom: 1px solid rgba(141, 141, 141, 0.1);
 }
 
+.product__image {
+  width: 80px;
+  height: 80px;
+}
+
 .product__title {
   margin: auto;
   width: 100px;
