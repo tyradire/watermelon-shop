@@ -16,8 +16,13 @@ const ProductItem = observer(({ card, vendor }) => {
   const addProduct = () => {
     addToBasket(card.id)
     .then((item) => {
-      let newProduct = item.product;
-      newProduct.product = {name: card.name, img: card.img, price: card.price };
+      let newProduct = {};
+      console.log('item ', item)
+      newProduct[item.product.productId] = { name: card.name, price: card.price, img: card.img, key: item.product.id, quantity: 1};
+
+      //obj[item.product.id] = { name: item.product.name, price: item.product.price, img: item.product.img, key:item.id, vendorId: item.product.vendorId, quantity: 1 };
+
+      //newProduct.product = {name: card.name, img: card.img, price: card.price };
       product.addProductToBasket(newProduct);
     })
     .catch(err => console.log(err));

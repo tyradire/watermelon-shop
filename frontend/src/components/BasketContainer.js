@@ -14,10 +14,11 @@ const BasketContainer = observer(() => {
   const {product} = useContext(Context)
   const {user} = useContext(Context);
 
-  const total = product.basket.reduce((a, b) => a + b.product['price'], 0);
+  console.log(product.basket)
+  //const total = product.basket.reduce((a, b) => a + b.product['price'], 0);
+  const total = 300;
 
   useEffect(() => {
-    console.log('is auth ', user.isAuth)
     getBasketProducts()
     .then(products => {
       product.setBasket(products.product);
@@ -26,15 +27,14 @@ const BasketContainer = observer(() => {
   }, [])
 
   const deleteProductBasket = (id) => {
-    console.log('лог из БаскетКонтейнера ', id)
     deleteBasketProduct(id)
     .then(() => {
-      product.setBasket( product.basket.filter(basket => basket.id !== id));
+      
+      // product.setBasket( product.basket.filter(basket => basket.id !== id));
     })
     .catch(err => console.log(err));
   }
 
-  console.log(product.basket.length)
 
   return (
     <div className='basket'>
@@ -43,11 +43,14 @@ const BasketContainer = observer(() => {
         <span className='basket__arrow'></span>
         <div className='basket__products'>
 
-          { product.basket.length === 0 ? 
+          { Object.keys(product.basket).length === 0 ? 
           <div className='basket__empty'>Корзина пуста</div> :
-          product.basket.map(item => 
+          // product.basket.map(item => 
          
-          <BasketItem key={item.id} product={item.product} id={item.id} deleteProduct={deleteProductBasket} />
+          // <BasketItem key={item.id} product={item.product} id={item.id} deleteProduct={deleteProductBasket} />
+
+          Object.keys(product.basket).map(item =>
+            <BasketItem key={product.basket[item].key} product={product.basket[item]} deleteProduct={deleteProductBasket} />
       
       )}
         </div>

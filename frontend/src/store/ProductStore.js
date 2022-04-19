@@ -5,7 +5,7 @@ export default class ProductStore {
     this._vendors = {}
     this._products = []
     //this._basket = [{name: 'aaaaaa', price: 133}]
-    this._basket = []
+    this._basket = {}
     this._selectedVendor = {}
     makeAutoObservable(this)
   }
@@ -19,15 +19,29 @@ export default class ProductStore {
   }
 
   setBasket(basket) {
-    this._basket = basket;
+    let obj = {};
+    basket.forEach(item => {
+      if (!obj[item.product.id]) {
+        obj[item.product.id] = { name: item.product.name, price: item.product.price, img: item.product.img, key:item.id, quantity: 1 };
+      } else {
+        obj[item.product.id].quantity = obj[item.product.id].quantity + 1;
+      }
+      this._basket = obj;
+    })
   }
 
   setSelectedVendor(vendor) {
     this._selectedVendor = vendor;
   }
 
-  addProductToBasket(product) {
-    this._basket.push(product);
+  addProductToBasket(newProduct) {
+    const key = Object.keys(newProduct)[0];
+    if (!this._basket[key]) {
+      this._basket[key] = newProduct[key];
+    } else {
+      this._basket[key].quantity = this._basket[key].quantity + 1;
+      console.log(this._basket[key].quantity)
+    }
   }
 
   get vendors() {
