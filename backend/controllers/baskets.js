@@ -7,6 +7,17 @@ const addBasketProduct = (req, res, next) => {
   .catch(next);
 }
 
+const deleteBasketProduct = (req, res, next) => {
+  const id = req.body.id;
+  BasketProduct.destroy({
+    where: {
+      id: id
+    }
+  })
+  .then((product) => res.status(200).send({product}))
+  .catch(next);
+}
+
 const getBasketProducts = (req, res, next) => {
   const userId = req.user.id;
   BasketProduct.findAll({
@@ -18,5 +29,5 @@ const getBasketProducts = (req, res, next) => {
 }
 
 module.exports = {
-  addBasketProduct, getBasketProducts,
+  addBasketProduct, getBasketProducts, deleteBasketProduct,
 };

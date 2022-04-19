@@ -34,7 +34,7 @@ const NavBar = observer(() => {
           </Nav>
           :
           <Nav>
-            <Button variant={'outline-light'} onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</Button>
+            <Button variant={'outline-light'} onClick={() => navigate(LOGIN_ROUTE)} className="m-2">Авторизация</Button>
           </Nav>
         }
       </Container>

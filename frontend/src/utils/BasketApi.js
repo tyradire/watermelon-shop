@@ -13,8 +13,21 @@ export const addToBasket = (id) => {
   })
 }
 
-export const getBasketProducts = () => {
+export const deleteBasketProduct = (id) => {
+  return fetch(`${BASE_URL}/deletebasketproduct`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': localStorage.getItem('jwt'),
+    },
+    body: id
+  })
+  .then((response) => {
+    return checkResponse(response);
+  })
+}
 
+export const getBasketProducts = () => {
   return fetch(`${BASE_URL}/getbasketproducts`, {
     method: 'GET',
     headers: {

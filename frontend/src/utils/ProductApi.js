@@ -1,7 +1,6 @@
 import { BASE_URL } from './consts';
 
 export const createProduct = (product) => {
-  
   return fetch(`${BASE_URL}/addproduct`, {
     method: 'POST',
     // headers: {
@@ -15,7 +14,6 @@ export const createProduct = (product) => {
 }
 
 export const getProducts = () => {
-
   return fetch(`${BASE_URL}/getproducts`, {
     method: 'GET',
     headers: {
@@ -27,8 +25,7 @@ export const getProducts = () => {
   })
 }
 
-export const getOneProduct = ( id ) => {
-  
+export const getOneProduct = ( id ) => { 
   return fetch(`${BASE_URL}/getone/` + id, {
     method: 'GET',
     headers: {
