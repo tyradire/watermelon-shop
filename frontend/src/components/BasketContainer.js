@@ -4,7 +4,7 @@ import BasketItem from './BasketItem';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { BASKET_ROUTE } from '../utils/consts';
-import { getBasketProducts } from '../utils/BasketApi';
+import { deleteBasketProduct, getBasketProducts } from '../utils/BasketApi';
 import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
 
@@ -25,6 +25,15 @@ const BasketContainer = observer(() => {
     .catch(err => console.log(err));
   }, [])
 
+  const deleteProductBasket = (id) => {
+    console.log('лог из БаскетКонтейнера ', id)
+    deleteBasketProduct(id)
+    .then(() => {
+      product.setBasket( product.basket.filter(basket => basket.id !== id));
+    })
+    .catch(err => console.log(err));
+  }
+
   return (
     <div className='basket'>
       <div className='basket__btn' ></div>
@@ -34,7 +43,7 @@ const BasketContainer = observer(() => {
 
           {product.basket.map(item => 
          
-          <BasketItem key={item.id} product={item.product} />
+          <BasketItem key={item.id} product={item.product} id={item.id} deleteProduct={deleteProductBasket} />
       
       )}
         </div>

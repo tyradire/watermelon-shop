@@ -14,13 +14,12 @@ export const addToBasket = (id) => {
 }
 
 export const deleteBasketProduct = (id) => {
-  return fetch(`${BASE_URL}/deletebasketproduct`, {
+  return fetch(`${BASE_URL}/deletebasketproduct/` + id, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       'authorization': localStorage.getItem('jwt'),
-    },
-    body: id
+    }
   })
   .then((response) => {
     return checkResponse(response);

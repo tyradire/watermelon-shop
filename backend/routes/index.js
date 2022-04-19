@@ -38,7 +38,7 @@ appRouter.use(verify);
 appRouter.get('/users/me', getUser);
 appRouter.post('/addtobasket/:id', addBasketProduct);
 appRouter.get('/getbasketproducts', getBasketProducts);
-appRouter.delete('/deletebasketproduct', deleteBasketProduct);
+appRouter.delete('/deletebasketproduct/:id', deleteBasketProduct);
 appRouter.use(userRouter);
 appRouter.use(vendorRouter);
 appRouter.use(productRouter);

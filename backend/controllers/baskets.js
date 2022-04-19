@@ -8,7 +8,7 @@ const addBasketProduct = (req, res, next) => {
 }
 
 const deleteBasketProduct = (req, res, next) => {
-  const id = req.body.id;
+  const id = req.params.id;
   BasketProduct.destroy({
     where: {
       id: id
