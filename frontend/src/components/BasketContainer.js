@@ -34,6 +34,8 @@ const BasketContainer = observer(() => {
     .catch(err => console.log(err));
   }
 
+  console.log(product.basket.length)
+
   return (
     <div className='basket'>
       <div className='basket__btn' ></div>
@@ -41,7 +43,9 @@ const BasketContainer = observer(() => {
         <span className='basket__arrow'></span>
         <div className='basket__products'>
 
-          {product.basket.map(item => 
+          { product.basket.length === 0 ? 
+          <div className='basket__empty'>Корзина пуста</div> :
+          product.basket.map(item => 
          
           <BasketItem key={item.id} product={item.product} id={item.id} deleteProduct={deleteProductBasket} />
       

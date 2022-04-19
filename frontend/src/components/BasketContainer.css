@@ -3,6 +3,14 @@
   display: flex;
 }
 
+.basket__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color:rgb(202, 202, 202);
+}
+
 .basket__btn {
   width: 30px;
   height: 100%;
