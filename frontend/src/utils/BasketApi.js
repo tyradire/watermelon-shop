@@ -26,6 +26,19 @@ export const deleteBasketProduct = (id) => {
   })
 }
 
+export const deleteOnePiece = (id) => {
+  return fetch(`${BASE_URL}/deleteonepiece/` + id, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': localStorage.getItem('jwt'),
+    }
+  })
+  .then((response) => {
+    return checkResponse(response);
+  })
+}
+
 export const getBasketProducts = () => {
   return fetch(`${BASE_URL}/getbasketproducts`, {
     method: 'GET',

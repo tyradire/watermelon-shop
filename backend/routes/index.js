@@ -7,7 +7,7 @@ const {
   createProduct, getProducts, getOneProduct,
 } = require('../controllers/products');
 const {
-  addBasketProduct, getBasketProducts, deleteBasketProduct,
+  addBasketProduct, getBasketProducts, deleteBasketProduct, deleteOnePiece,
 } = require('../controllers/baskets');
 const {
   createUser, login, getUser,
@@ -39,6 +39,7 @@ appRouter.get('/users/me', getUser);
 appRouter.post('/addtobasket/:id', addBasketProduct);
 appRouter.get('/getbasketproducts', getBasketProducts);
 appRouter.delete('/deletebasketproduct/:id', deleteBasketProduct);
+appRouter.delete('/deleteonepiece/:id', deleteOnePiece);
 appRouter.use(userRouter);
 appRouter.use(vendorRouter);
 appRouter.use(productRouter);

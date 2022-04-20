@@ -8,12 +8,23 @@ const addBasketProduct = (req, res, next) => {
 }
 
 const deleteBasketProduct = (req, res, next) => {
-  const id = req.params.id;
+  const productId = req.params.id;
+  const userId = req.user.id;
   BasketProduct.destroy({
-    where: {
-      id: id
-    }
+    where: { productId, userId }
   })
+  .then((product) => res.status(200).send({product}))
+  .catch(next);
+}
+
+const deleteOnePiece = (req, res, next) => {
+  const productId = req.params.id;
+  BasketProduct.findOne({
+    where: { productId }
+  })
+  .then((piece) => BasketProduct.destroy({
+    where: { id: piece.id }
+  }))
   .then((product) => res.status(200).send({product}))
   .catch(next);
 }
@@ -29,5 +40,5 @@ const getBasketProducts = (req, res, next) => {
 }
 
 module.exports = {
-  addBasketProduct, getBasketProducts, deleteBasketProduct,
+  addBasketProduct, getBasketProducts, deleteBasketProduct, deleteOnePiece,
 };

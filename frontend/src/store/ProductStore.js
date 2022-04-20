@@ -22,7 +22,7 @@ export default class ProductStore {
     let obj = {};
     basket.forEach(item => {
       if (!obj[item.product.id]) {
-        obj[item.product.id] = { name: item.product.name, price: item.product.price, img: item.product.img, key:item.id, quantity: 1 };
+        obj[item.product.id] = { name: item.product.name, price: item.product.price, img: item.product.img, key:item.id, quantity: 1, productId: item.product.id };
       } else {
         obj[item.product.id].quantity = obj[item.product.id].quantity + 1;
       }
@@ -34,13 +34,16 @@ export default class ProductStore {
     this._selectedVendor = vendor;
   }
 
+  deleteProductPiece(id) {
+    this._basket[id].quantity -= 1;
+  }
+
   addProductToBasket(newProduct) {
     const key = Object.keys(newProduct)[0];
     if (!this._basket[key]) {
       this._basket[key] = newProduct[key];
     } else {
       this._basket[key].quantity = this._basket[key].quantity + 1;
-      console.log(this._basket[key].quantity)
     }
   }
 

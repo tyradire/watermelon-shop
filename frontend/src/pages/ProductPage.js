@@ -33,7 +33,7 @@ const ProductPage = () => {
           {product.info}
         </div>
         <div className='d-flex ms-2 mt-3 align-items-center'>
-          {product.price} ₽
+          {product.price} &#8381;
           <Button variant={'outline-dark'} className='ms-5 mr-3' onClick={addProduct}>Купить</Button>
         </div>
       </Col>
