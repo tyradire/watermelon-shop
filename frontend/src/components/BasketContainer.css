@@ -1,9 +1,9 @@
-.basket {
+.basket-container {
   position: relative;
   display: flex;
 }
 
-.basket__empty {
+.basket-container__empty {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@
   color:rgb(202, 202, 202);
 }
 
-.basket__btn {
+.basket-container__btn {
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -20,11 +20,11 @@
   transition: .5s;
 }
 
-.basket__btn:hover {
+.basket-container__btn:hover {
   opacity: .5;
 }
 
-.basket__content {
+.basket-container__content {
   display: none;
   position: absolute;
   top: 54px;
@@ -37,7 +37,7 @@
   
 }
 
-.basket__arrow {
+.basket-container__arrow {
   display: block;
   position: absolute;
   top: -7px;
@@ -49,30 +49,30 @@
   z-index: 1;
 }
 
-.basket__products {
+.basket-container__products {
   max-height: 360px;
   overflow-y: scroll;
 }
 
-.basket__products::-webkit-scrollbar {
+.basket-container__products::-webkit-scrollbar {
   background-color: transparent;
   width: 5px;
 }
 
-.basket__products::-webkit-scrollbar-thumb {
+.basket-container__products::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: linear-gradient(180deg, #6de06d, #286e00)
 }
 
-.basket__products::-webkit-scrollbar-track {
+.basket-container__products::-webkit-scrollbar-track {
   margin: 5px 0 0 0;
   background-color: transparent;
   width: 5px;
 }
 
-.basket:hover .basket__content {display: block;}
+.basket-container:hover .basket-container__content {display: block;}
 
-.basket__footer {
+.basket-container__footer {
   padding: 6px 20px;
   height: 60px;
   background-color: rgb(247, 247, 247);

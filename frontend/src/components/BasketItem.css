@@ -76,6 +76,8 @@
 }
 
 .product__price {
+  width: 46px;
+  text-align: end;
   margin: auto;
   font-size: 16px;
 }

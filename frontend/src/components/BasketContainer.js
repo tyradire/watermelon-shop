@@ -35,21 +35,21 @@ const BasketContainer = observer(() => {
   const total = Object.keys(product.basket).reduce((a, b) => a + product.basket[b].price * product.basket[b].quantity, 0);
 
   return (
-    <div className='basket'>
-      <img src={Object.keys(product.basket).length === 0 ? basketEmpty : basketWithProduct} alt='корзина' className='basket__btn'/>
-      <div className='basket__content'>
-        <span className='basket__arrow'></span>
-        <div className='basket__products'>
+    <div className='basket-container'>
+      <img src={Object.keys(product.basket).length === 0 ? basketEmpty : basketWithProduct} alt='корзина' className='basket-container__btn'/>
+      <div className='basket-container__content'>
+        <span className='basket-container__arrow'></span>
+        <div className='basket-container__products'>
 
           { Object.keys(product.basket).length === 0 ? 
-          <div className='basket__empty'>Корзина пуста</div> :
+          <div className='basket-container__empty'>Корзина пуста</div> :
 
           Object.keys(product.basket).map(item =>
             <BasketItem key={product.basket[item].key} card={product.basket[item]} deleteProduct={deleteProductBasket} />
       
       )}
         </div>
-        <div className='basket__footer d-flex justify-content-between align-items-center'>
+        <div className='basket-container__footer d-flex justify-content-between align-items-center'>
           <div>
             <p className='footer__description-price'>Общая сумма</p>
             <p className='footer__price'>{total} &#8381;</p>
