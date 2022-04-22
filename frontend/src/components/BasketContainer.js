@@ -7,6 +7,8 @@ import { BASKET_ROUTE } from '../utils/consts';
 import { deleteBasketProduct, getBasketProducts } from '../utils/BasketApi';
 import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
+import basketEmpty from '../assets/basket-empty.png';
+import basketWithProduct from '../assets/basket-with-product.png';
 
 const BasketContainer = observer(() => {
 
@@ -34,7 +36,7 @@ const BasketContainer = observer(() => {
 
   return (
     <div className='basket'>
-      <div className='basket__btn' ></div>
+      <img src={Object.keys(product.basket).length === 0 ? basketEmpty : basketWithProduct} alt='корзина' className='basket__btn'/>
       <div className='basket__content'>
         <span className='basket__arrow'></span>
         <div className='basket__products'>
