@@ -3,8 +3,7 @@ import React, { useContext, useState } from 'react';
 import { addToBasket, deleteOnePiece, getBasketProducts } from '../utils/BasketApi';
 import { Context } from '../index';
 import './Basket.css';
-import BasketItem from '../components/BasketItem';
-import BasketPageCard from '../components/BasketPageCard';
+import BasketPageList from '../components/BasketPageList';
 
 const Basket = observer(() => {
   
@@ -13,13 +12,7 @@ const Basket = observer(() => {
   // const total = Object.keys(product.basket).reduce((a, b) => a + product.basket[b].price * product.basket[b].quantity, 0);
 
   return (
-    <div>
-      <BasketPageCard />
-      <BasketPageCard />
-      <BasketPageCard />
-      <BasketPageCard />
-      <BasketPageCard />
-    </div>
+    <BasketPageList />
   );
 });
 

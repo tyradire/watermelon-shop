@@ -1,7 +1,8 @@
+import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
 import './BasketPageCard.css';
 
-const BasketPageCard = () => {
+const BasketPageCard = observer(({ card }) => {
 
   const [finalCount, setFinalCount] = useState(0);
   const [finalPrice, setFinalPrice] = useState(0);
@@ -16,30 +17,28 @@ const BasketPageCard = () => {
   };
 
   const cost = 100;
-  const name = 'Весёлый арбуз';
-  const description = 'Самый прикольный арбуз в мире';
   const vendor = 'Арбузикс STYLE';
 
   return (
     <div className='basket-card'>
         <img className='basket-card__image' 
-          src={'https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1Rks1jIt_s4Ohr2dG-BDXZpIqaKTM5SRkZCeTgDn6uOyic'} 
+          src={process.env.REACT_APP_PUBLIC_URL + card['img']} 
           alt="товар" 
         />
         <div className='basket-card__info'>
           <div className='basket-card__product'>
-            <p className='basket-card__title'>{name}</p>
-            <p className='basket-card__description'>{description}</p>
-            <p>{cost} &#8381;</p>
+            <p className='basket-card__title'>{card.name}</p>
+            <p className='basket-card__description'>{card.info}</p>
+            <p className='basket-card__vendor'>{vendor}</p>
           </div>  
-          <p className='basket-card__vendor'>{vendor}</p>
+          <p>{card.price} &#8381;</p>
         </div>
         <div className='basket-card__product-cost'>
           <div className='basket-card__quantity-wrapper'>
             <button alt='minus-button' className='basket-card__btn' onClick={() => clickMinus()} disabled={finalCount < 1}>
               <p className='basket-card__btn-symbol'>-</p>
             </button>
-            <p className='basket-card__quantity'>{finalCount}</p>
+            <p className='basket-card__quantity'>{card.quantity}</p>
             <button alt='minus-button' className='basket-card__btn ' onClick={() => clickPlus()} >
               <p className='basket-card__btn-symbol'>+</p>
             </button>
@@ -48,6 +47,6 @@ const BasketPageCard = () => {
         </div>
       </div>
   );
-};
+});
 
 export default BasketPageCard;
