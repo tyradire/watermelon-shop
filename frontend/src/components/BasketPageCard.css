@@ -33,6 +33,9 @@
   font-size: 15px;
   line-height: 15px;
   font-weight: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .basket-card__vendor {
