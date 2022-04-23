@@ -6,7 +6,6 @@ import VendorBar from '../components/VendorBar';
 import { getProducts } from '../utils/ProductApi';
 import { getVendors } from '../utils/VendorApi';
 import {Context} from "../index";
-import { getBasketProducts } from '../utils/BasketApi';
 
 const Shop = observer(() => {
   const {product} = useContext(Context)

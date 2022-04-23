@@ -17,14 +17,11 @@ const BasketPageList = observer(() => {
     .catch(err => console.log(err));
   }, [])
 
-  console.log(product.basket)
-
   return (
     <div>
       {
-        Object.keys(product.basket).map(item =>{
-          console.log(product.basket[item]);
-          return <BasketPageCard key={product.basket[item].key} card={product.basket[item]} />}
+        Object.keys(product.basket).map(item => {
+        return <BasketPageCard key={product.basket[item].key} card={product.basket[item]} vendor={product.vendors[item.vendorId]} />}
         )
       }
     </div>

@@ -1,26 +1,31 @@
 import { observer } from 'mobx-react-lite';
 import React, { useContext, useState } from 'react';
+import { deleteOnePiece, addToBasket } from '../utils/BasketApi';
 import { Context } from '../index';
 import './BasketPageCard.css';
 
-const BasketPageCard = observer(({ card }) => {
+const BasketPageCard = observer(({ card, vendor }) => {
 
   const { product } = useContext(Context);
 
-  const [finalCount, setFinalCount] = useState(0);
-  const [finalPrice, setFinalPrice] = useState(0);
-
   const clickMinus = () => {
-    setFinalCount(finalCount - 1)
-    setFinalPrice(finalCount * cost)
+    deleteOnePiece(card.productId);
+    product.deleteProductPiece(card.productId);
   };
 
   const clickPlus = () => {
-    setFinalCount(finalCount + 1)
-    setFinalPrice(finalCount * cost)
+    addToBasket(card.productId)
+    .then((item) => {
+      let newProduct = {};
+      console.log('потеря',vendor)
+      newProduct[item.product.productId] = { name: card.name, vendor: vendor, price: card.price, img: card.img, key: item.product.id, quantity: 1, productId: item.product.productId };
+      product.addProductToBasket(newProduct);
+    })
+    .catch(err => console.log(err));
   };
 
-  const cost = 100;
+  // const total = Object.keys(product.basket).reduce((a, b) => a + product.basket[b].price * product.basket[b].quantity, 0);
+  const total = card.price * card.quantity;
 
   return (
     <div className='basket-card'>
@@ -34,11 +39,11 @@ const BasketPageCard = observer(({ card }) => {
             <p className='basket-card__description'>{card.info}</p>
             <p className='basket-card__vendor'>{product.vendors[card.vendorId]}</p>
           </div>  
-          <p>{card.price} &#8381;</p>
+          <p className='basket-card__price'>{card.price} &#8381; за 1 шт.</p>
         </div>
         <div className='basket-card__product-cost'>
           <div className='basket-card__quantity-wrapper'>
-            <button alt='minus-button' className='basket-card__btn' onClick={() => clickMinus()} disabled={finalCount < 1}>
+            <button alt='minus-button' className='basket-card__btn' onClick={() => clickMinus()} disabled={false}>
               <p className='basket-card__btn-symbol'>-</p>
             </button>
             <p className='basket-card__quantity'>{card.quantity}</p>
@@ -46,7 +51,7 @@ const BasketPageCard = observer(({ card }) => {
               <p className='basket-card__btn-symbol'>+</p>
             </button>
           </div>
-          <p className='basket-card__price'>{finalPrice}</p>
+          <p className='basket-card__total-price'>{total} &#8381;</p>
         </div>
       </div>
   );
