@@ -22,7 +22,7 @@ export default class ProductStore {
     let obj = {};
     basket.forEach(item => {
       if (!obj[item.product.id]) {
-        obj[item.product.id] = { name: item.product.name, price: item.product.price, img: item.product.img, key:item.id, quantity: 1, productId: item.product.id, info: item.product.info };
+        obj[item.product.id] = { name: item.product.name, vendorId: item.product.vendorId, price: item.product.price, img: item.product.img, key: item.id, quantity: 1, productId: item.product.id, info: item.product.info };
       } else {
         obj[item.product.id].quantity = obj[item.product.id].quantity + 1;
       }

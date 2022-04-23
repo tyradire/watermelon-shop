@@ -8,7 +8,7 @@ import {Context} from "../index";
 import { observer } from 'mobx-react-lite';
 import './ProductItem.css';
 
-const ProductItem = observer(({ card, vendor }) => {
+const ProductItem = observer(({ card, vendor, vendorId }) => {
 
   const navigate = useNavigate();
   const {product} = useContext(Context)
@@ -17,7 +17,7 @@ const ProductItem = observer(({ card, vendor }) => {
     addToBasket(card.id)
     .then((item) => {
       let newProduct = {};
-      newProduct[item.product.productId] = { name: card.name, price: card.price, img: card.img, key: item.product.id, quantity: 1, productId: item.product.productId };
+      newProduct[item.product.productId] = { name: card.name, vendorId: vendorId, price: card.price, img: card.img, key: item.product.id, quantity: 1, productId: item.product.productId };
       product.addProductToBasket(newProduct);
     })
     .catch(err => console.log(err));

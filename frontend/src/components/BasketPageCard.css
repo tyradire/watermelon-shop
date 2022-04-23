@@ -31,10 +31,11 @@
 .basket-card__description {
   width: 250px;
   font-size: 15px;
-  line-height: 15px;
+  line-height: 18px;
   font-weight: normal;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
 }
 

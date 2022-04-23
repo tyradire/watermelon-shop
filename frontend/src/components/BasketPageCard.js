@@ -1,8 +1,11 @@
 import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { Context } from '../index';
 import './BasketPageCard.css';
 
 const BasketPageCard = observer(({ card }) => {
+
+  const { product } = useContext(Context);
 
   const [finalCount, setFinalCount] = useState(0);
   const [finalPrice, setFinalPrice] = useState(0);
@@ -11,13 +14,13 @@ const BasketPageCard = observer(({ card }) => {
     setFinalCount(finalCount - 1)
     setFinalPrice(finalCount * cost)
   };
+
   const clickPlus = () => {
     setFinalCount(finalCount + 1)
     setFinalPrice(finalCount * cost)
   };
 
   const cost = 100;
-  const vendor = 'Арбузикс STYLE';
 
   return (
     <div className='basket-card'>
@@ -29,7 +32,7 @@ const BasketPageCard = observer(({ card }) => {
           <div className='basket-card__product'>
             <p className='basket-card__title'>{card.name}</p>
             <p className='basket-card__description'>{card.info}</p>
-            <p className='basket-card__vendor'>{vendor}</p>
+            <p className='basket-card__vendor'>{product.vendors[card.vendorId]}</p>
           </div>  
           <p>{card.price} &#8381;</p>
         </div>
