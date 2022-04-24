@@ -9,19 +9,19 @@ const BasketPageList = observer(() => {
 
   const {product} = useContext(Context);
 
-  useEffect(() => {
-    getBasketProducts()
-    .then(products => {
-      product.setBasket(products.product);
-    })
-    .catch(err => console.log(err));
-  }, [])
+  // useEffect(() => {
+  //   getBasketProducts()
+  //   .then(products => {
+  //     product.setBasket(products.product);
+  //   })
+  //   .catch(err => console.log(err));
+  // }, [])
 
   return (
     <div>
       {
         Object.keys(product.basket).map(item => {
-        return <BasketPageCard key={product.basket[item].key} card={product.basket[item]} vendor={product.vendors[item.vendorId]} />}
+        return <BasketPageCard key={product.basket[item].key} card={product.basket[item]} vendor={product.getVendorNameById(item.vendorId)} />}
         )
       }
     </div>

@@ -6,19 +6,22 @@ import VendorBar from '../components/VendorBar';
 import { getProducts } from '../utils/ProductApi';
 import { getVendors } from '../utils/VendorApi';
 import {Context} from "../index";
+import { getBasketProducts } from '../utils/BasketApi';
 
 const Shop = observer(() => {
   const {product} = useContext(Context)
 
-  useEffect(() => {
-    Promise.all([getVendors(), getProducts()])
-    .then(([ vendors, products ]) => {
-      product.setVendors(vendors)
-      product.setProducts(products)
-    })
-    //.catch(err => {
+  // useEffect(() => {
+  //   Promise.all([getVendors(), getProducts(), getBasketProducts() ])
+  //   .then(([ vendors, products, basket ]) => {
+  //     product.setVendors(vendors);
+  //     product.setProducts(products);
+  //     product.setBasket(basket.product);
+  //     console.log('все данные с сервера получены');
+  //   })
+  //   //.catch(err => {
     
-  }, [])
+  // }, [])
 
 
   useEffect(() => {

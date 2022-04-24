@@ -13,6 +13,8 @@ const BasketPageCard = observer(({ card, vendor }) => {
     product.deleteProductPiece(card.productId);
   };
 
+  //console.log('111111111 ', Object.keys(product.vendors)) попробовать консоль лог на юз эффект
+
   const clickPlus = () => {
     addToBasket(card.productId)
     .then((item) => {

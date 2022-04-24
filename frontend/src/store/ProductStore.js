@@ -47,6 +47,10 @@ export default class ProductStore {
     }
   }
 
+  getVendorNameById(id) {
+    return this.vendors[id];
+  }
+
   get vendors() {
     return this._vendors;
   }
