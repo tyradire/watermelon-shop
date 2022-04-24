@@ -5,7 +5,6 @@ import { SHOP_ROUTE } from '../utils/consts';
 import { Context } from '../index';
 import { getVendors } from '../utils/VendorApi';
 import { getProducts } from '../utils/ProductApi';
-import { getBasketProducts } from '../utils/BasketApi';
 
 const AppRouter = () => {
 
@@ -14,11 +13,10 @@ const AppRouter = () => {
 
   
   useEffect(() => {
-    Promise.all([getVendors(), getProducts(), getBasketProducts() ])
-    .then(([ vendors, products, basket ]) => {
+    Promise.all([getVendors(), getProducts() ])
+    .then(([ vendors, products ]) => {
       product.setVendors(vendors);
       product.setProducts(products);
-      product.setBasket(basket.product);
     })
     //.catch(err => {
     

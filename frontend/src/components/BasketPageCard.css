@@ -6,6 +6,7 @@
   justify-content: space-between;
   border: 1px solid rgb(224, 224, 224);
   border-radius: 4px;
+  box-shadow: 0px 0px 2px 0px rgba(63, 63, 63, 0.3);
 }
 
 .basket-card__image {
@@ -62,12 +63,30 @@
 
 /* Counter */
 
+.basket-card__delete-btn {
+  margin: 10px 10px 0;
+  font-size: 14px;
+  line-height: 14px;
+  width: 16px;
+  height: auto;
+  text-align: center;
+  color: rgb(173, 173, 173);
+  align-self: flex-end;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.basket-card__delete-btn:hover {
+  cursor: pointer;
+  opacity: .5;
+}
+
 .basket-card__quantity-wrapper {
-  margin-top: 10px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgb(224, 224, 224);
+  border: 1px solid #198754;
   border-radius: 6px;
   padding: 5px;
   width: 80px;
@@ -106,5 +125,5 @@
 .basket-card__btn-symbol {
   font-size: 16px;
   line-height: 16px;
-  color: rgb(173, 173, 173);
+  color: #198754;
 }
