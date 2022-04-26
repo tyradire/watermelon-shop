@@ -51,7 +51,9 @@ const login = (req, res, next) => {
   .then(({ user, matched }) => {
     if (!matched) throw new UnauthorizedError('Неправильные почта или пароль');
     const token = jwt.sign(
-      { id: user.id },
+      { id: user.id,
+        role: user.role
+      },
       NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
     );
     res.status(200).send({ token });
