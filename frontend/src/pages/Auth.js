@@ -48,14 +48,20 @@ const Auth = observer(() => {
       localStorage.setItem('jwt', res.token);
       user.setUser(user);
       user.setIsAuth(true);
-      user.setRole('ADMIN');
-      console.log(user);
+      getRole()
       navigate(SHOP_ROUTE);
     })
     .catch((err) => {
       console.log(err);
       setLoginError(ERRORS[err]);
     })
+  }
+
+  const getRole = () => {
+    const jwt = localStorage.getItem('jwt')
+    getToken(jwt)
+    .then(res => user.setRole(res.role))
+    .catch(err => console.log(err))
   }
 
   return (
