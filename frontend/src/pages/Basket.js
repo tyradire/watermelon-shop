@@ -11,7 +11,6 @@ const Basket = observer(() => {
   const {product} = useContext(Context)
   const [basketIsLoading, setBasketIsLoading] = useState(true);
 
-  // console.log(Object.keys(product.basket))
   const priceCount = Object.keys(product.basket).reduce((a, b) => a + product.basket[b].price * product.basket[b].quantity, 0)
   const productCount = Object.keys(product.basket).reduce((a, b) => a + product.basket[b].quantity, 0);
   

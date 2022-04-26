@@ -47,10 +47,10 @@ const Auth = observer(() => {
     .then((res) => {
       localStorage.setItem('jwt', res.token);
       user.setUser(user);
-      console.log(user)
       user.setIsAuth(true);
+      user.setRole('ADMIN');
+      console.log(user);
       navigate(SHOP_ROUTE);
-
     })
     .catch((err) => {
       console.log(err);

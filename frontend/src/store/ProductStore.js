@@ -4,7 +4,6 @@ export default class ProductStore {
   constructor() {
     this._vendors = {}
     this._products = []
-    //this._basket = [{name: 'aaaaaa', price: 133}]
     this._basket = {}
     this._selectedVendor = {}
     makeAutoObservable(this)
