@@ -1,9 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Container, Card } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LOGIN_ROUTE, SHOP_ROUTE, ERRORS } from '../utils/consts';
-import { register, authorize, getToken } from '../utils/ApiAuth';
+import { register, authorize } from '../utils/ApiAuth';
 import { Context } from '../index';
 import './Auth.css';
 import Register from '../components/Register';
@@ -48,20 +48,13 @@ const Auth = observer(() => {
       localStorage.setItem('jwt', res.token);
       user.setUser(user);
       user.setIsAuth(true);
-      getRole()
+      user.setRole(res.role);
       navigate(SHOP_ROUTE);
     })
     .catch((err) => {
       console.log(err);
       setLoginError(ERRORS[err]);
     })
-  }
-
-  const getRole = () => {
-    const jwt = localStorage.getItem('jwt')
-    getToken(jwt)
-    .then(res => user.setRole(res.role))
-    .catch(err => console.log(err))
   }
 
   return (
