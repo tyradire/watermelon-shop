@@ -46,7 +46,7 @@ const Auth = observer(() => {
     authorize(email, password)
     .then((res) => {
       localStorage.setItem('jwt', res.token);
-      user.setUser(user);
+      user.setEmail(email);
       user.setIsAuth(true);
       user.setRole(res.role);
       navigate(SHOP_ROUTE);

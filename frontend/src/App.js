@@ -17,7 +17,9 @@ const App = observer(() => {
     if (jwt) {
       getToken(jwt)
       .then((res) => {
-        user.setUser(true)
+        user.setUser(res);
+        user.setEmail(res.email);
+        user.setRole(res.role);
         user.setIsAuth(true);
       })
       .catch(err => console.log(err))

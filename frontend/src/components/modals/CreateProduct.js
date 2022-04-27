@@ -36,11 +36,13 @@ const CreateProduct = observer(({ show, onHide }) => {
     formData.append('name', name);
     formData.append('price', `${price}`);
     formData.append('img', file);
-    formData.append('vendorId', product.selectedVendor.id);
+    formData.append('vendorId', product.selectedVendor);
     // formData.append('info', JSON.stringify(info));
     createProduct(formData).then(data => onHide())
     //createProduct({name, price, vendorId: product.selectedVendor.id}).then(data => onHide())
   }
+
+  console.log(product)
 
   useEffect(() => {
     getVendors().then(data => product.setVendors(data))
@@ -64,8 +66,8 @@ const CreateProduct = observer(({ show, onHide }) => {
           <Dropdown className='mt-2 mb-2'>
             <Dropdown.Toggle>{product.selectedVendor.name || 'Выберите производителя'}</Dropdown.Toggle>
             <Dropdown.Menu>
-              {product.vendors.map(vendor =>
-                <Dropdown.Item onClick={() => product.setSelectedVendor(vendor)} key={vendor.id}>{vendor.name}</Dropdown.Item>  
+              {Object.keys(product.vendors).map(vendor =>
+                <Dropdown.Item onClick={() => product.setSelectedVendor(vendor)} key={vendor}>{product.vendors[vendor]}</Dropdown.Item>  
               )}
             </Dropdown.Menu>
             <Form.Control 
