@@ -23,6 +23,9 @@ const VendorBar = observer(() => {
 
   return (
     <ListGroup>
+      <ListGroup.Item style={{cursor: 'pointer', fontWeight: 'bold'}} onClick={() => product.setSelectedVendor({id: '', name: ''})}>
+        Все продавцы
+      </ListGroup.Item>
       {Object.keys(product.vendors).map(vendor => 
         <ListGroup.Item 
           style={{cursor: 'pointer'}}
