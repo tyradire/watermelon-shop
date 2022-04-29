@@ -28,6 +28,16 @@ const Basket = observer(() => {
     return (array = array || ['товар', 'товара', 'товаров']) && array[(int % 100 > 4 && int % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(int % 10 < 5) ? int % 10 : 5]];
   }
 
+  function editPhone(e) {
+    setInputPhone(formattingInputValue(e.target))
+    console.log(inputPhone)
+  }
+
+  function formattingInputValue(input) {
+    return input.value.replace(/\D/g, '');
+    // return input.value.replace(/\D/g, '');
+  }
+
   useEffect(() => {
     getBasketProducts()
     .then(products => {
@@ -62,10 +72,12 @@ const Basket = observer(() => {
           ></input>
           <p className='basket-page__input-title'>Введите номер телефона</p>
           <input 
-            type="tel" 
+            type={'tel'}
+            value={inputPhone}
+            data-tel-input
             placeholder='+1 (123) 456-78-90'
             className='basket-page__input' 
-            onChange={(e) => setInputPhone(e.target.value)}
+            onChange={(e) => editPhone(e)}
           ></input>
         </div>
         <div className='basket-page__sidebar'>
