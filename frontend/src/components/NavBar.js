@@ -23,7 +23,7 @@ const NavBar = observer(() => {
   }
 
   return (
-    <Navbar className='p-0' bg="dark" variant="dark">
+    <Navbar className='p-0 navbar' bg="dark" variant="dark">
       <Container>
         <Link className="text-decoration-none text-white" to={SHOP_ROUTE}>
           Watermelon Shop

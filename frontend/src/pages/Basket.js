@@ -4,17 +4,23 @@ import { Context } from '../index';
 import './Basket.css';
 import BasketPageList from '../components/BasketPageList';
 import { getBasketProducts } from '../utils/BasketApi';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
+import CreateOrder from '../components/modals/CreateOrder';
 
 const Basket = observer(() => {
   
+  let date = new Date()
+  let todayDate = date.toISOString().split('T')[0];
+  let now = Date.now();
+  let nowNew = new Date(now + 86400000 * 3).toLocaleDateString().split('.').reverse().join('-');
+
   const {product} = useContext(Context);
   const {user} = useContext(Context);
   const [basketIsLoading, setBasketIsLoading] = useState(true);
   const [inputEmail, setInputEmail] = useState(user.email);
   const [inputPhone, setInputPhone] = useState('');
-  const [inputDate, setInputDate] = useState('');
-
+  const [inputDate, setInputDate] = useState(todayDate);
+ 
   const priceCount = Object.keys(product.basket).reduce((a, b) => a + product.basket[b].price * product.basket[b].quantity, 0)
   const productCount = Object.keys(product.basket).reduce((a, b) => a + product.basket[b].quantity, 0);
   
@@ -31,11 +37,6 @@ const Basket = observer(() => {
     .catch(err => console.log(err));
   }, [])
 
-  let date = new Date()
-  let todayDate = date.toISOString().split('T')[0];
-  let now = Date.now();
-  let nowNew = new Date(now + 86400000 * 3).toLocaleDateString().split('.').reverse().join('-');
-
   return (
     <div className='basket-page__container'>
       <BasketPageList />
@@ -48,6 +49,7 @@ const Basket = observer(() => {
           max={nowNew} 
           type={'date'} 
           id='datePicker'
+          value={inputDate}
           onChange={(e) => setInputDate(e.target.value)}
           ></input>
           <p className='basket-page__input-title' >Введите email</p>
@@ -68,13 +70,15 @@ const Basket = observer(() => {
         </div>
         <div className='basket-page__sidebar'>
           <p className='basket-page__info'>Итого: {basketIsLoading ? 0 : productCount} {morph(productCount, ['товар', 'товара', 'товаров'])} на {priceCount} &#8381;</p>
-          <Button 
+          <CreateOrder inputPhone={inputPhone} inputDate={inputDate} inputEmail={inputEmail} productCount={productCount} priceCount={priceCount} />
+          {/* <Button 
             className='h-75 mx-auto mb-2 w-75' 
             variant="outline-success" 
             size="sm" 
             disabled={!(inputPhone && inputDate && inputEmail)} 
-            onClick={() => console.log(inputDate, inputEmail, inputPhone)}
-          >Купить</Button>
+            onClick={handleShow}
+          >Купить</Button> */}
+          
         </div>
       </div>
     </div>
