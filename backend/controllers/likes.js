@@ -1,11 +1,24 @@
 const { Like } = require('../models/models');
 const NotFoundError = require('../errors/NotFoundError');
+const ConflictError = require('../errors/ConflictError');
 
 const addLike = (req, res, next) => {
   const id = req.params.id;
-  Like.create({productId: id, userId: req.user.id})
+  Like.findOne({
+    where: { 
+      productId: id 
+    }
+  })
+  .then((like) => {
+    if (like) throw new ConflictError('Лайк уже поставлен');
+    return id;
+  })
+  .then((res) => Like.create({
+    productId: id, 
+    userId: req.user.id
+  }))
   .then((item) => res.status(200).send({item}))
-  .catch(next);
+  .catch(next)
 }
 
 const deleteLike = (req, res, next) => {

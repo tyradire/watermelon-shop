@@ -1,5 +1,6 @@
 .product-item__image {
   border-radius: 4px 4px 0 0;
+  cursor: pointer;
 }
 
 .product-item__product-name {
@@ -8,4 +9,8 @@
 
 .product-item__vendor-name {
   font-size: 13px;
+}
+
+.product-item__like-btn {
+  cursor: pointer;
 }
