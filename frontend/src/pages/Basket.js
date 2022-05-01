@@ -29,13 +29,27 @@ const Basket = observer(() => {
   }
 
   function editPhone(e) {
-    setInputPhone(formattingInputValue(e.target))
-    console.log(inputPhone)
+    console.log('delete ', e.target.value)
+    let formattingValue = formattingInputValue(e.target);
+    if (!formattingValue || e.target.value == '+') {
+      console.log(11111111111)
+      setInputPhone('');
+      return e.target.value = '';
+    };
+    if (['7', '8', '9'].indexOf(formattingValue[0]) !== -1) {
+      if (formattingValue[0] === '9') setInputPhone('+7' + formattingValue); //если ввод начали с "9", меняем его на "+7" ВОЗМОЖНО НУЖЕН РЕТЮРН
+      let firstNumbers = (formattingValue[0] == '8') ? '8' : '+7';
+      setInputPhone(firstNumbers + ' ');
+      if (formattingValue.length > 1) {
+        setInputPhone(firstNumbers + ' ' + '(' + formattingValue.substring(1,4))
+      }
+    } else {
+      return setInputPhone('+' + formattingValue.slice(0));
+    }
   }
 
   function formattingInputValue(input) {
     return input.value.replace(/\D/g, '');
-    // return input.value.replace(/\D/g, '');
   }
 
   useEffect(() => {
@@ -77,6 +91,7 @@ const Basket = observer(() => {
             data-tel-input
             placeholder='+1 (123) 456-78-90'
             className='basket-page__input' 
+            maxLength={18}
             onChange={(e) => editPhone(e)}
           ></input>
         </div>
