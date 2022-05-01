@@ -6,6 +6,7 @@ import { Context } from '../index';
 import { getVendors } from '../utils/VendorApi';
 import { getProducts } from '../utils/ProductApi';
 import { getToken } from '../utils/ApiAuth';
+import { getLikes } from '../utils/LikeApi';
 
 const AppRouter = () => {
 
@@ -13,11 +14,11 @@ const AppRouter = () => {
   const {product} = useContext(Context);
 
   useEffect(() => {
-    Promise.all([getVendors(), getProducts() ])
-    .then(([ vendors, products ]) => {
+    Promise.all([getVendors(), getProducts(), getLikes()])
+    .then(([ vendors, products, likes ]) => {
       product.setVendors(vendors);
       product.setProducts(products);
-
+      user.setLikes(likes);
     })
     //.catch(err => {
     

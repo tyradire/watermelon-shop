@@ -6,6 +6,7 @@ export default class UserStore {
     this._user = {}
     this._role = ''
     this._email = 'reqaeaw@yasdf'
+    this._likes = []
     makeAutoObservable(this)
   }
 
@@ -25,6 +26,10 @@ export default class UserStore {
     this._email = email;
   }
 
+  setLikes(likes) {
+    this._likes = likes;
+  }
+
   get isAuth() {
     return this._isAuth;
   }
@@ -40,4 +45,9 @@ export default class UserStore {
   get email() {
     return this._email
   }
+
+  get likes() {
+    return this._likes
+  }
+
 }

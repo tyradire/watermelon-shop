@@ -31,9 +31,6 @@ const deleteLike = (req, res, next) => {
 }
 
 const getLikes = (req, res, next) => {
-  console.log(req)
-  console.log(req.user)
-  console.log(req.user.id)
   const id = req.user.id;
   Like.findAll({
     where: { userId: id }

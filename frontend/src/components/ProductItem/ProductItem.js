@@ -15,10 +15,19 @@ const ProductItem = observer(({ card, vendor, vendorId }) => {
 
   const navigate = useNavigate();
   const {product} = useContext(Context)
+  const {user} = useContext(Context);
+
+  const test = () => {
+
+  }
+
+  function toggleForLike() {
+    console.log(user.likes, user.likes.some(card.id));
+  }
 
   const clickToAddLike = () => {
-    console.log(card.id)
     addLike(card.id);
+    toggleForLike();
   }
 
   const addProduct = () => {

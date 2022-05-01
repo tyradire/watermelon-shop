@@ -13,6 +13,19 @@ export const addLike = (id) => {
   })
 }
 
+export const getLikes = () => {
+  return fetch(`${BASE_URL}/getlikes`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': localStorage.getItem('jwt'),
+    }
+  })
+  .then((response) => {
+    return checkResponse(response);
+  })
+}
+
 const checkResponse = (response) => {
   return response.ok ? response.json() : Promise.reject(response);
 }
