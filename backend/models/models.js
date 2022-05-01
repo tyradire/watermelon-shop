@@ -89,6 +89,14 @@ const Rating = sequelize.define('rating', {
   }
 });
 
+const Like = sequelize.define('like', {
+  id: { 
+    type: DataTypes.INTEGER, 
+    primaryKey: true, 
+    autoIncrement: true 
+  }
+});
+
 User.hasOne(Basket);
 Basket.belongsTo(User);
 
@@ -107,6 +115,12 @@ BasketProduct.belongsTo(Product);
 Vendor.hasMany(Product);
 Product.belongsTo(Vendor);
 
+User.hasMany(Like);
+Like.belongsTo(User);
+
+Product.hasMany(Like);
+Like.belongsTo(Product);
+
 
 module.exports = {
   User, 
@@ -114,5 +128,6 @@ module.exports = {
   BasketProduct, 
   Product,
   Vendor, 
-  Rating
+  Rating,
+  Like,
 };
