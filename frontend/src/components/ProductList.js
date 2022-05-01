@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useContext } from 'react';
 import { Row } from 'react-bootstrap';
 import { Context } from '../index';
-import ProductItem from './ProductItem';
+import ProductItem from './ProductItem/ProductItem';
 
 const ProductList = observer(() => {
 

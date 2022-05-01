@@ -2,12 +2,12 @@ import React, { useState, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Container, Card } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { LOGIN_ROUTE, SHOP_ROUTE, ERRORS } from '../utils/consts';
-import { register, authorize } from '../utils/ApiAuth';
-import { Context } from '../index';
+import { LOGIN_ROUTE, SHOP_ROUTE, ERRORS } from '../../utils/consts';
+import { register, authorize } from '../../utils/ApiAuth';  
+import { Context } from '../../index';
 import './Auth.css';
-import Register from '../components/Register';
-import Login from '../components/Login';
+import Register from '../../components/Register';
+import Login from '../../components/Login';
 
 const Auth = observer(() => {
 
@@ -18,18 +18,6 @@ const Auth = observer(() => {
 
   const [registerError, setRegisterError] = useState('');
   const [loginError, setLoginError] = useState('');
-
-  // useEffect(() => {
-  //   const jwt = localStorage.getItem('jwt');
-  //   if (jwt) {
-  //     getToken(jwt)
-  //     .then((res) => {
-  //       user.setIsAuth(true);
-  //       navigate(SHOP_ROUTE);
-  //     })
-  //     .catch(err => console.log(err));
-  //   }
-  // }, [])
 
   const handleRegisterSubmit = (email, password) => {
     register(email, password)

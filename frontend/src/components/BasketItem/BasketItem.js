@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
 import './BasketItem.css';
 import { observer } from 'mobx-react-lite';
-import { addToBasket, deleteOnePiece, getBasketProducts } from '../utils/BasketApi';
-import {Context} from "../index";
-import plus from '../assets/plus.svg';
-import minus from '../assets/minus.svg';
+import { addToBasket, deleteOnePiece, getBasketProducts } from '../../utils/BasketApi';
+import {Context} from "../../index";
 
 const BasketItem = observer(({ card, deleteProduct }) => {
 
@@ -35,9 +33,9 @@ const BasketItem = observer(({ card, deleteProduct }) => {
       <img className='product__image' alt={'product'} src={process.env.REACT_APP_PUBLIC_URL + card['img']}/>
       <p className='product__title'>{ card['name'] }</p>
       <div className='product__quantity-wrapper'>
-        <button src={minus} alt='minus-button' className='quantity-wrapper__btn quantity-wrapper__btn-minus' onClick={clickMinus} disabled={product.basket[card.productId].quantity < 2}></button>
+        <button alt='minus-button' className='quantity-wrapper__btn quantity-wrapper__btn-minus' onClick={clickMinus} disabled={product.basket[card.productId].quantity < 2}></button>
         <p className='product__quantity'>{card.quantity}</p>
-        <button src={plus} alt='minus-button' className='quantity-wrapper__btn quantity-wrapper__btn-plus' onClick={clickPlus}></button>
+        <button alt='minus-button' className='quantity-wrapper__btn quantity-wrapper__btn-plus' onClick={clickPlus}></button>
       </div>
       <p className='product__price'>{ card.price } &#8381;</p> 
     </div>

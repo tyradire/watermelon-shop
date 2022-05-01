@@ -51,12 +51,12 @@
 }
 
 .quantity-wrapper__btn-minus {
-  background-image: url('../assets/minus.svg');
+  background-image: url('../../assets/minus.svg');
   background-size: cover;
 }
 
 .quantity-wrapper__btn-plus {
-  background-image: url('../assets/plus.svg');
+  background-image: url('../../assets/plus.svg');
   background-size: cover;
 }
 

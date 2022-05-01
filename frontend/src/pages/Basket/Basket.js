@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import React, { useContext, useEffect, useState } from 'react';
-import { Context } from '../index';
+import { Context } from '../../index';
 import './Basket.css';
-import BasketPageList from '../components/BasketPageList';
-import { getBasketProducts } from '../utils/BasketApi';
+import BasketPageList from '../../components/BasketPageList/BasketPageList';
+import { getBasketProducts } from '../../utils/BasketApi';
 import { Button, Modal } from 'react-bootstrap';
-import CreateOrder from '../components/modals/CreateOrder';
+import CreateOrder from '../../components/modals/CreateOrder';
 
 const Basket = observer(() => {
   

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import './BasketPageList.css';
-import BasketPageCard from './BasketPageCard';
-import { Context } from '../index';
+import BasketPageCard from '../BasketPageCard/BasketPageCard';
+import { Context } from '../../index';
 import { observer } from 'mobx-react-lite';
-import { deleteBasketProduct } from '../utils/BasketApi';
+import { deleteBasketProduct } from '../../utils/BasketApi';
 
 const BasketPageList = observer(() => {
 

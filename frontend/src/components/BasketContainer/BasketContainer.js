@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import './BasketContainer.css';
-import BasketItem from './BasketItem';
+import BasketItem from '../BasketItem/BasketItem';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { BASKET_ROUTE } from '../utils/consts';
-import { deleteBasketProduct, getBasketProducts } from '../utils/BasketApi';
-import { Context } from '../index';
+import { BASKET_ROUTE } from '../../utils/consts';
+import { deleteBasketProduct, getBasketProducts } from '../../utils/BasketApi';
+import { Context } from '../../index';
 import { observer } from 'mobx-react-lite';
-import basketEmpty from '../assets/basket-empty.png';
-import basketWithProduct from '../assets/basket-with-product.png';
+import basketEmpty from '../../assets/basket-empty.png';
+import basketWithProduct from '../../assets/basket-with-product.png';
 
 const BasketContainer = observer(() => {
 

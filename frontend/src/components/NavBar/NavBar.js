@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Context } from '../index';
+import { Context } from '../../index';
 import { Button, Container, Navbar, Nav } from 'react-bootstrap';
-import { SHOP_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE, BASKET_ROUTE } from '../utils/consts';
-import BasketContainer from './BasketContainer';
+import { SHOP_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE, BASKET_ROUTE } from '../../utils/consts';
+import BasketContainer from '../BasketContainer/BasketContainer';
 
 const NavBar = observer(() => {
 

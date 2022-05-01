@@ -1,8 +1,8 @@
 import { ADMIN_ROUTE, BASKET_ROUTE, SHOP_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, PRODUCT_ROUTE } from './utils/consts';
 import Admin from './pages/Admin';
-import Basket from './pages/Basket';
+import Basket from './pages/Basket/Basket';
 import Shop from './pages/Shop';
-import Auth from './pages/Auth';
+import Auth from './pages/Auth/Auth';
 import ProductPage from './pages/ProductPage';
 
 export const authRoutes = [

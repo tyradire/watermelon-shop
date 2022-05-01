@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { Button, Card, Col, Image } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import like from '../assets/like.svg';
-import { PRODUCT_ROUTE } from '../utils/consts';
-import { addToBasket } from '../utils/BasketApi';
-import {Context} from "../index";
+import like from '../../assets/like.svg';
+import { PRODUCT_ROUTE } from '../../utils/consts';
+import { addToBasket } from '../../utils/BasketApi';
+import {Context} from "../../index";
 import { observer } from 'mobx-react-lite';
 import './ProductItem.css';
 
