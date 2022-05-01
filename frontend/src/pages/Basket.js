@@ -29,23 +29,36 @@ const Basket = observer(() => {
   }
 
   function editPhone(e) {
-    console.log('delete ', e.target.value)
     let formattingValue = formattingInputValue(e.target);
     if (!formattingValue || e.target.value == '+') {
       console.log(11111111111)
       setInputPhone('');
       return e.target.value = '';
     };
+    
     if (['7', '8', '9'].indexOf(formattingValue[0]) !== -1) {
-      if (formattingValue[0] === '9') setInputPhone('+7' + formattingValue); //если ввод начали с "9", меняем его на "+7" ВОЗМОЖНО НУЖЕН РЕТЮРН
+      if (formattingValue[0] === '9') return setInputPhone('+7' + formattingValue); //если ввод начали с "9", меняем его на "+7" ВОЗМОЖНО НУЖЕН РЕТЮРН
       let firstNumbers = (formattingValue[0] == '8') ? '8' : '+7';
+      //firstNumbers += ' ';
+
       setInputPhone(firstNumbers + ' ');
       if (formattingValue.length > 1) {
-        setInputPhone(firstNumbers + ' ' + '(' + formattingValue.substring(1,4))
+        firstNumbers += ' (' + formattingValue.substring(1,4);
       }
+      if (formattingValue.length >= 5) {
+        firstNumbers += ') ' + formattingValue.substring(4,7);
+      }
+      if (formattingValue.length >= 8) {
+        firstNumbers += '-' + formattingValue.substring(7,9);
+      }
+      if (formattingValue.length >= 10) {
+        firstNumbers += '-' + formattingValue.substring(9,11);
+      }
+      setInputPhone(firstNumbers);
     } else {
       return setInputPhone('+' + formattingValue.slice(0));
     }
+
   }
 
   function formattingInputValue(input) {
