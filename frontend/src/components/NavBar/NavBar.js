@@ -14,8 +14,6 @@ const NavBar = observer(() => {
   const {user} = useContext(Context);
   const navigate = useNavigate();
 
-  console.log(user)
-
   const signOut = () => {
     localStorage.removeItem('jwt');
     user.setUser({});

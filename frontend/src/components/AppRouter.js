@@ -5,7 +5,6 @@ import { SHOP_ROUTE } from '../utils/consts';
 import { Context } from '../index';
 import { getVendors } from '../utils/VendorApi';
 import { getProducts } from '../utils/ProductApi';
-import { getToken } from '../utils/ApiAuth';
 import { getLikes } from '../utils/LikeApi';
 
 const AppRouter = () => {
@@ -19,9 +18,10 @@ const AppRouter = () => {
       product.setVendors(vendors);
       product.setProducts(products);
       user.setLikes(likes);
+      console.log('получили данные с сервера')
+      //console.log('user: ', user);
+      //console.log('like: ', user.likes.length);
     })
-    //.catch(err => {
-    
   }, [])
 
   return (

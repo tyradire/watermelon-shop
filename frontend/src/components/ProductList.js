@@ -12,7 +12,7 @@ const ProductList = observer(() => {
     <Row className='d-flex'>
       {product.products.map(item => 
          item.vendorId === ( Number(product.selectedVendor.id) || item.vendorId ) ?
-          <ProductItem key={item.id} card={item} vendor={product.vendors[item.vendorId]} />
+          <ProductItem key={item.id} card={item} vendor={product.vendors[item.vendorId]} vendorId={item.vendorId} productId={item.id} />
         : ''
       )}
     </Row>

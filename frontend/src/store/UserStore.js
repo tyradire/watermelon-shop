@@ -30,6 +30,10 @@ export default class UserStore {
     this._likes = likes;
   }
 
+  addLikeById(id) {
+    this._likes.push(id); 
+  }
+
   get isAuth() {
     return this._isAuth;
   }

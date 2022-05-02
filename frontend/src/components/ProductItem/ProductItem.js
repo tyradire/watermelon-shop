@@ -9,26 +9,24 @@ import {Context} from "../../index";
 import { observer } from 'mobx-react-lite';
 import './ProductItem.css';
 import { addLike } from '../../utils/LikeApi';
-import { getToken } from '../../utils/ApiAuth';
 
-const ProductItem = observer(({ card, vendor, vendorId }) => {
+const ProductItem = observer(({ card, vendor, vendorId, productId }) => {
 
-  const navigate = useNavigate();
   const {product} = useContext(Context)
   const {user} = useContext(Context);
-
-  const test = () => {
-
-  }
-
-  function toggleForLike() {
-    console.log(user.likes, user.likes.some(card.id));
-  }
+  const navigate = useNavigate();
 
   const clickToAddLike = () => {
-    addLike(card.id);
-    toggleForLike();
+    addLike(card.id)
+    .then(res => user.addLikeById(productId))
+    .catch(err => console.log(err))
   }
+
+  useEffect(() => {
+    //console.log('user: ', user);
+    //console.log('user: ', user);
+    //console.log('like: ', user.likes.length);
+  }, [])
 
   const addProduct = () => {
     addToBasket(card.id)
@@ -50,7 +48,13 @@ const ProductItem = observer(({ card, vendor, vendorId }) => {
           <div className='product-item__product-name'>{card.name}</div>
           <div className='d-flex align-items-center'>
             <div>{card.rating}&nbsp;</div>
-            <Image className='product-item__like-btn' width={16} height={16} src={likeBtn} onClick={clickToAddLike}/>
+            <Image className='product-item__like-btn' 
+              width={16} 
+              height={16} 
+              src={
+                user.likes.includes(productId) ? likeBtnActive : likeBtn
+              } 
+              onClick={clickToAddLike}/>
           </div>
         </div>
         <div style={{textAlign: 'center'}} className='text-black-50 product-item__vendor-name'>{vendor}</div>
