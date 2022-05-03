@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Context } from '../../index';
 import { Button, Container, Navbar, Nav } from 'react-bootstrap';
-import { SHOP_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE, BASKET_ROUTE } from '../../utils/consts';
+import { SHOP_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE, BASKET_ROUTE, FAVOURITES_ROUTE } from '../../utils/consts';
 import BasketContainer from '../BasketContainer/BasketContainer';
 
 const NavBar = observer(() => {
@@ -25,6 +25,9 @@ const NavBar = observer(() => {
       <Container>
         <Link className="text-decoration-none text-white" to={SHOP_ROUTE}>
           Watermelon Shop
+        </Link>
+        <Link className="text-decoration-none text-white" to={FAVOURITES_ROUTE}>
+          Favourites
         </Link>
         {user.isAuth ?
           <Nav>

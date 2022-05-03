@@ -46,7 +46,7 @@ const ProductItem = observer(({ card, vendor, vendorId, productId }) => {
         <div className='text-black-50 mt-1 mx-1 d-flex justify-content-between align-items-center'>
           <div className='product-item__product-name'>{card.name}</div>
           <div className='d-flex align-items-center'>
-            <div>{card.rating}&nbsp;</div>
+            {/* <div>{card.rating}&nbsp;</div> */}
             <Image className='product-item__like-btn' 
               width={16} 
               height={16} 
