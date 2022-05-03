@@ -5,6 +5,7 @@ import Shop from './pages/Shop';
 import Auth from './pages/Auth/Auth';
 import ProductPage from './pages/ProductPage';
 import Favourites from './pages/Favourites';
+import NotFound from './pages/NotFound';
 
 export const authRoutes = [
   {
@@ -38,4 +39,8 @@ export const publicRoutes = [
       path: PRODUCT_ROUTE + '/:id',
       Component: ProductPage
   },
+  {
+      path: '*',
+      Component: NotFound
+  }
 ]
