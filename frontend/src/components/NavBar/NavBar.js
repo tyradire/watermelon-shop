@@ -5,6 +5,7 @@ import { Context } from '../../index';
 import { Button, Container, Navbar, Nav } from 'react-bootstrap';
 import { SHOP_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE, BASKET_ROUTE, FAVOURITES_ROUTE } from '../../utils/consts';
 import BasketContainer from '../BasketContainer/BasketContainer';
+import like from '../../assets/like-active.svg';
 
 const NavBar = observer(() => {
 
@@ -23,12 +24,14 @@ const NavBar = observer(() => {
   return (
     <Navbar className='p-0 navbar' bg="dark" variant="dark">
       <Container>
-        <Link className="text-decoration-none text-white" to={SHOP_ROUTE}>
+        <Nav>
+        <Navbar.Brand className="text-decoration-none text-white" href={SHOP_ROUTE}>
           Watermelon Shop
-        </Link>
-        <Link className="text-decoration-none text-white" to={FAVOURITES_ROUTE}>
-          Favourites
-        </Link>
+        </Navbar.Brand>
+        <Nav.Link className="text-decoration-none text-danger d-inline" href={FAVOURITES_ROUTE}>
+          Favourites <img src={like} alt="Лайк" width={16} height={16} />
+        </Nav.Link>
+        </Nav>
         {user.isAuth ?
           <Nav>
             <p className='text-white-50 m-3'>{user.email}</p>

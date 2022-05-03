@@ -7,20 +7,6 @@ const VendorBar = observer(() => {
   
   const { product } = useContext(Context);
 
-  // return (
-  //   <ListGroup>
-  //     {product.vendors.map(vendor => 
-  //       <ListGroup.Item 
-  //         style={{cursor: 'pointer'}}
-  //         active={vendor.id === product.selectedVendor.id}
-  //         onClick={() => product.setSelectedVendor(vendor)}
-  //         key={vendor.id}>
-  //         {vendor.name}
-  //       </ListGroup.Item>
-  //       )}
-  //   </ListGroup>
-  // );
-
   return (
     <ListGroup>
       <ListGroup.Item style={{cursor: 'pointer', fontWeight: 'bold'}} onClick={() => product.setSelectedVendor({id: '', name: ''})}>
