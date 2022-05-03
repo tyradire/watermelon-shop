@@ -11,6 +11,7 @@ const NavBar = observer(() => {
 
   const location = useLocation()
   const notBasket = location.pathname !== BASKET_ROUTE
+  const isFavourites = location.pathname === FAVOURITES_ROUTE
 
   const {user} = useContext(Context);
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const NavBar = observer(() => {
         <Navbar.Brand className="text-decoration-none text-white" href={SHOP_ROUTE}>
           Watermelon Shop
         </Navbar.Brand>
-        <Nav.Link className="text-decoration-none text-danger d-inline" href={FAVOURITES_ROUTE}>
+        <Nav.Link className={`text-decoration-none  d-inline ${isFavourites ? 'text-danger' : ''}`} href={FAVOURITES_ROUTE}>
           Favourites <img src={like} alt="Лайк" width={16} height={16} />
         </Nav.Link>
         </Nav>
@@ -50,3 +51,5 @@ const NavBar = observer(() => {
 })
 
 export default NavBar;
+
+{/* <Nav.Link className="text-decoration-none text-danger d-inline" href={FAVOURITES_ROUTE}></Nav.Link> */}

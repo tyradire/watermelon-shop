@@ -9,6 +9,7 @@ import { Context } from '../../index';
 import { observer } from 'mobx-react-lite';
 import basketEmpty from '../../assets/basket-empty.png';
 import basketWithProduct from '../../assets/basket-with-product.png';
+import Empty from '../Empty/Empty';
 
 const BasketContainer = observer(() => {
 
@@ -46,7 +47,7 @@ const BasketContainer = observer(() => {
         <div className='basket-container__products'>
 
           { Object.keys(product.basket).length === 0 ? 
-          <div className='basket-container__empty'>Корзина пуста</div> :
+          <Empty location={'корзине'} /> :
 
           Object.keys(product.basket).map(item =>
             <BasketItem key={product.basket[item].key} card={product.basket[item]} deleteProduct={deleteProductBasket} />

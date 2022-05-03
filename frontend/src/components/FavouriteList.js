@@ -16,7 +16,6 @@ const FavouriteList = observer(() => {
     if ((item.vendorId === ( Number(product.selectedVendor.id) || item.vendorId )) && user.likes.includes(item.id)) {
       return <ProductItem key={item.id} card={item} vendor={product.vendors[item.vendorId]} vendorId={item.vendorId} productId={item.id} />
     }
-
   })
 }
     </Row>
