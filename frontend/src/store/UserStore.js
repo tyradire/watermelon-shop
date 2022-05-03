@@ -34,6 +34,11 @@ export default class UserStore {
     this._likes.push(id); 
   }
 
+  deleteLikeById(id) {
+    console.log(this._likes)
+    this._likes = this._likes.filter(item => item !== id);
+  }
+
   get isAuth() {
     return this._isAuth;
   }

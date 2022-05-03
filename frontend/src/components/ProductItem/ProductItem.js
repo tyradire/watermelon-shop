@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Button, Card, Col, Image } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import likeBtn from '../../assets/like.svg';
@@ -8,7 +8,7 @@ import { addToBasket } from '../../utils/BasketApi';
 import {Context} from "../../index";
 import { observer } from 'mobx-react-lite';
 import './ProductItem.css';
-import { addLike } from '../../utils/LikeApi';
+import { addLike, deleteLike } from '../../utils/LikeApi';
 
 const ProductItem = observer(({ card, vendor, vendorId, productId }) => {
 
@@ -16,17 +16,16 @@ const ProductItem = observer(({ card, vendor, vendorId, productId }) => {
   const {user} = useContext(Context);
   const navigate = useNavigate();
 
-  const clickToAddLike = () => {
+  const toggleLike = () => {
+    if (user.likes.includes(card.id)) {
+      deleteLike(card.id)
+      .then(res => user.deleteLikeById(card.id))
+      .catch(err => console.log(err))
+    } else {
     addLike(card.id)
     .then(res => user.addLikeById(productId))
-    .catch(err => console.log(err))
+    .catch(err => console.log(err))}
   }
-
-  useEffect(() => {
-    //console.log('user: ', user);
-    //console.log('user: ', user);
-    //console.log('like: ', user.likes.length);
-  }, [])
 
   const addProduct = () => {
     addToBasket(card.id)
@@ -54,7 +53,7 @@ const ProductItem = observer(({ card, vendor, vendorId, productId }) => {
               src={
                 user.likes.includes(productId) ? likeBtnActive : likeBtn
               } 
-              onClick={clickToAddLike}/>
+              onClick={toggleLike}/>
           </div>
         </div>
         <div style={{textAlign: 'center'}} className='text-black-50 product-item__vendor-name'>{vendor}</div>

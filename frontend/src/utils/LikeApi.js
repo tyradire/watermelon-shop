@@ -26,6 +26,19 @@ export const getLikes = () => {
   })
 }
 
+export const deleteLike = (id) => {
+  return fetch(`${BASE_URL}/deletelike/`+ id, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': localStorage.getItem('jwt'),
+    }
+  })
+  .then((response) => {
+    return checkResponse(response);
+  })
+}
+
 const checkResponse = (response) => {
   return response.ok ? response.json() : Promise.reject(response);
 }
