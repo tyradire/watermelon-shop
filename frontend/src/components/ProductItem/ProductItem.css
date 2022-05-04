@@ -14,3 +14,7 @@
 .product-item__like-btn {
   cursor: pointer;
 }
+
+.product-item__like-btn:disabled {
+  cursor: pointer;
+}

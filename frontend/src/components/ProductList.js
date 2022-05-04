@@ -4,7 +4,7 @@ import { Row } from 'react-bootstrap';
 import { Context } from '../index';
 import ProductItem from './ProductItem/ProductItem';
 
-const ProductList = observer(() => {
+const ProductList = observer(({ show, alert }) => {
 
   const { product } = useContext(Context)
 
@@ -12,7 +12,7 @@ const ProductList = observer(() => {
     <Row className='d-flex'>
       {product.products.map(item => 
          item.vendorId === ( Number(product.selectedVendor.id) || item.vendorId ) ?
-          <ProductItem key={item.id} card={item} vendor={product.vendors[item.vendorId]} vendorId={item.vendorId} productId={item.id} />
+          <ProductItem show={show} alert={alert} key={item.id} card={item} vendor={product.vendors[item.vendorId]} vendorId={item.vendorId} productId={item.id} />
         : ''
       )}
     </Row>

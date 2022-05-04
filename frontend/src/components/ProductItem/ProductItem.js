@@ -10,7 +10,7 @@ import { observer } from 'mobx-react-lite';
 import './ProductItem.css';
 import { addLike, deleteLike } from '../../utils/LikeApi';
 
-const ProductItem = observer(({ card, vendor, vendorId, productId }) => {
+const ProductItem = observer(({ card, vendor, vendorId, productId, alert }) => {
 
   const {product} = useContext(Context)
   const {user} = useContext(Context);
@@ -25,6 +25,10 @@ const ProductItem = observer(({ card, vendor, vendorId, productId }) => {
     addLike(card.id)
     .then(res => user.addLikeById(productId))
     .catch(err => console.log(err))}
+  }
+
+  const notAuth = () => {
+    alert(true);
   }
 
   const addProduct = () => {
@@ -46,14 +50,13 @@ const ProductItem = observer(({ card, vendor, vendorId, productId }) => {
         <div className='text-black-50 mt-1 mx-1 d-flex justify-content-between align-items-center'>
           <div className='product-item__product-name'>{card.name}</div>
           <div className='d-flex align-items-center'>
-            {/* <div>{card.rating}&nbsp;</div> */}
-            <Image className='product-item__like-btn' 
+            <Image className='product-item__like-btn'
               width={16} 
               height={16} 
               src={
                 user.likes.includes(productId) ? likeBtnActive : likeBtn
-              } 
-              onClick={toggleLike}/>
+              }
+              onClick={user.isAuth ? toggleLike : notAuth}/>
           </div>
         </div>
         <div style={{textAlign: 'center'}} className='text-black-50 product-item__vendor-name'>{vendor}</div>
