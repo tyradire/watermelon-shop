@@ -10,7 +10,9 @@ const Shop = observer(() => {
   const {product} = useContext(Context)
 
   useEffect(() => {
-    getProducts(product.selectedVendor.id).then(data => product.setProducts(data))
+    getProducts(product.selectedVendor.id)
+    .then(data => product.setProducts(data))
+    .catch(err => console.log(err))
   }, [])
 
   return (

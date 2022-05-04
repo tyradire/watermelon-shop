@@ -1,11 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { ListGroup } from 'react-bootstrap';
 import { Context } from '../index';
+import { getVendors } from '../utils/VendorApi';
 
 const VendorBar = observer(() => {
   
   const { product } = useContext(Context);
+
+  useEffect(() => {
+    getVendors()
+    .then(data => product.setVendors(data))
+    .catch(err => console.log(err))
+  })
 
   return (
     <ListGroup>
