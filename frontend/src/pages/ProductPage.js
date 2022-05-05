@@ -4,6 +4,7 @@ import { getOneProduct } from '../utils/ProductApi';
 import { addToBasket } from '../utils/BasketApi';
 import { useParams } from 'react-router-dom';
 import like from '../assets/like.svg';
+import plug from '../assets/image-plug.png';
 import { Context } from '../index';
 
 const ProductPage = () => {
@@ -25,12 +26,13 @@ const ProductPage = () => {
   useEffect(() => {
     getOneProduct(id)
     .then(product => setPageItem(product))
+    .catch(err => console.log(err))
   }, []);
 
   return (
     <Container className='mt-5 d-flex'>
       <Col md={4}>
-        <Image width={300} height={300} src={process.env.REACT_APP_PUBLIC_URL + pageItem.img}/>
+        <Image width={300} height={300} src={pageItem.img ? process.env.REACT_APP_PUBLIC_URL + pageItem.img : plug}/>
       </Col>
       <Col md={4} className='mt-4'>
         <Row className='d-flex flex-column align-items-center'>

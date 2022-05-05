@@ -22,7 +22,8 @@ const getVendors = (req, res, next) => Vendor.findAll()
   .then((vendors) => {
     if (!vendors) throw new NotFoundError('Ни одного производителя не найдено');
     res.status(200).send(vendors);
-  });
+  })
+  .catch(next);
 
 module.exports = {
   createVendor, getVendors,

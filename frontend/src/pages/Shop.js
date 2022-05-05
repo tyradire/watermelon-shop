@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import React, { useContext, useEffect, useState } from 'react';
-import { Alert, Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import ProductList from '../components/ProductList';
 import VendorBar from '../components/VendorBar';
 import { getProducts } from '../utils/ProductApi';
 import {Context} from "../index";
-import './Shop.css';
+import UnauthorizedAlert from '../components/UnauthorizedAlert/UnauthorizedAlert';
 
 const Shop = observer(() => {
 
@@ -36,21 +36,7 @@ const Shop = observer(() => {
           <ProductList alert={alert} />
         </Col>
       </Row>
-      <Alert className='mt-5 w-75 mx-auto shop__alert' show={show} variant="warning">
-        <div className='d-flex '>
-          <p className='shop__alert-description'>
-            Только зарегистрированные пользователи могут добавлять товары в избранное
-          </p>
-          <div>
-            <Button size="sm" className='m-1' onClick={() => setShow(false)} variant="success">
-              Войти
-            </Button>
-            <Button size="sm" className='m-1' onClick={() => setShow(false)} variant="success">
-              Зарегистрироваться
-            </Button>
-          </div> 
-        </div>   
-      </Alert>
+      <UnauthorizedAlert show={show} setShow={setShow} location={'избранное'} />
     </Container>
   );
 });

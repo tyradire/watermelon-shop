@@ -61,7 +61,7 @@ const ProductItem = observer(({ card, vendor, vendorId, productId, alert }) => {
         </div>
         <div style={{textAlign: 'center'}} className='text-black-50 product-item__vendor-name'>{vendor}</div>
       </Card>
-      <Button style={{width: 190}} className="rounded-0" variant="outline-success" size="sm" onClick={addProduct}>Добавить в корзину</Button>
+      <Button style={{width: 190}} className="rounded-0" variant="outline-success" size="sm" onClick={addProduct} disabled={!user.isAuth}>Добавить в корзину</Button>
     </Col>
     
   );
