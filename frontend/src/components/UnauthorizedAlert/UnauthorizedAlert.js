@@ -1,8 +1,12 @@
 import React from 'react';
 import { Alert, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/consts';
 import './UnauthorizedAlert.css';
 
-const UnauthorizedAlert = ({ show, setShow, location }) => {
+const UnauthorizedAlert = ({ show, location }) => {
+
+  const navigate = useNavigate();
 
   return (
     <Alert className='mt-5 w-75 mx-auto unauthorized-alert' show={show} variant="warning">
@@ -11,10 +15,10 @@ const UnauthorizedAlert = ({ show, setShow, location }) => {
             Только зарегистрированные пользователи могут добавлять товары в {location}
           </p>
           <div>
-            <Button size="sm" className='m-1' onClick={() => setShow(false)} variant="success">
+            <Button size="sm" className='m-1' onClick={() => navigate(LOGIN_ROUTE)} variant="success">
               Войти
             </Button>
-            <Button size="sm" className='m-1' onClick={() => setShow(false)} variant="success">
+            <Button size="sm" className='m-1' onClick={() => navigate(REGISTRATION_ROUTE)} variant="success">
               Зарегистрироваться
             </Button>
           </div> 
