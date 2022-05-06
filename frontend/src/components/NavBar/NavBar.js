@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Context } from '../../index';
 import { Button, Container, Navbar, Nav } from 'react-bootstrap';
 import { SHOP_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE, BASKET_ROUTE, FAVOURITES_ROUTE } from '../../utils/consts';
@@ -14,12 +14,15 @@ const NavBar = observer(() => {
   const isFavourites = location.pathname === FAVOURITES_ROUTE
 
   const {user} = useContext(Context);
+  const {product} = useContext(Context);
   const navigate = useNavigate();
 
   const signOut = () => {
     localStorage.removeItem('jwt');
     user.setUser({});
     user.setIsAuth(false);
+    user.setLikes([]);
+    product.clearBasket();
   }
 
   return (

@@ -44,6 +44,11 @@
   width: 40px;
   font-size: 15px;
   line-height: 16px;
+
+}
+
+.button-counter__quantity::selection {
+  background: transparent;
 }
 
 .button-counter__add-btn {

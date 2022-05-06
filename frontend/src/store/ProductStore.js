@@ -29,6 +29,10 @@ export default class ProductStore {
     })
   }
 
+  clearBasket() {
+    this._basket = {};
+  }
+
   setSelectedVendor(vendor) {
     this._selectedVendor = vendor;
   }
