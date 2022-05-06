@@ -3,13 +3,16 @@ import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { getOneProduct } from '../utils/ProductApi';
 import { addToBasket } from '../utils/BasketApi';
 import { useParams } from 'react-router-dom';
-import like from '../assets/like.svg';
+import likeBtn from '../assets/like.svg';
 import plug from '../assets/image-plug.png';
+import likeBtnActive from '../assets/like-active.svg';
 import { Context } from '../index';
+import { observer } from 'mobx-react-lite';
 
-const ProductPage = () => {
+const ProductPage = observer(() => {
 
   const {product} = useContext(Context)
+  const {user} = useContext(Context)
   const [pageItem, setPageItem] = useState({info: []})
   const {id} = useParams();
 
@@ -47,15 +50,22 @@ const ProductPage = () => {
         </div>
       </Col>
       <Col md={4}>
-        <div 
+        {/* <div 
           className='d-flex align-items-center justify-content-center mt-5'
-          style={{background: `url(${like}) no-repeat center center`, width: 40, height: 40, backgroundSize: 'contain'}}
+          style={{background: `url(${likeBtn}) no-repeat center center`, width: 40, height: 40, backgroundSize: 'contain'}}
         >
-          {pageItem.rating}
-        </div>
+        </div> */}
+        <Image
+          className='d-flex align-items-center justify-content-center mt-5'
+          width={30}
+          height={30}
+          src={
+            user.likes.includes(parseInt(id)) ? likeBtnActive : likeBtn
+          }
+        />
       </Col>
     </Container>
   );
-};
+});
 
 export default ProductPage;
