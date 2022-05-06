@@ -9,6 +9,7 @@
 
 .product-item__vendor-name {
   font-size: 13px;
+  margin-bottom: 4px;
 }
 
 .product-item__like-btn {

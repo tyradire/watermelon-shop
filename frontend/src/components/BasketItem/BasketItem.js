@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './BasketItem.css';
 import { observer } from 'mobx-react-lite';
-import { addToBasket, deleteOnePiece, getBasketProducts } from '../../utils/BasketApi';
+import { addToBasket, deleteOnePiece } from '../../utils/BasketApi';
 import {Context} from "../../index";
 
 const BasketItem = observer(({ card, deleteProduct }) => {

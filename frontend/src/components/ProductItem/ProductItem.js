@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import likeBtn from '../../assets/like.svg';
 import likeBtnActive from '../../assets/like-active.svg';
 import { PRODUCT_ROUTE } from '../../utils/consts';
-import { addToBasket } from '../../utils/BasketApi';
+import { addToBasket, deleteOnePiece } from '../../utils/BasketApi';
 import {Context} from "../../index";
 import { observer } from 'mobx-react-lite';
 import './ProductItem.css';
 import { addLike, deleteLike } from '../../utils/LikeApi';
+import ButtonWithCounter from '../ButtonWithCounter/ButtonWithCounter';
 
 const ProductItem = observer(({ card, vendor, vendorId, productId, alert }) => {
 
@@ -41,11 +42,17 @@ const ProductItem = observer(({ card, vendor, vendorId, productId, alert }) => {
     .catch(err => console.log(err));
   };
 
+  const deleteProduct = () => {
+    console.log('удаление')
+    deleteOnePiece(card.id);
+    product.deleteProductPiece(card.id);
+  }
+
   // src={like ? likeBtn : likeBtnActive}
 
   return (
     <Col md={3} className='mt-1' >
-      <Card style={{width: 190, borderRadius: 4}} border={'light'} bg={'light'} >
+      <Card style={{width: 190}} border={'light'} bg={'light'} >
         <Image className='product-item__image' width={190} height={190} src={process.env.REACT_APP_PUBLIC_URL + card.img} onClick={() => navigate(PRODUCT_ROUTE + '/' + card.id)}/>
         <div className='text-black-50 mt-1 mx-1 d-flex justify-content-between align-items-center'>
           <div className='product-item__product-name'>{card.name}</div>
@@ -61,7 +68,21 @@ const ProductItem = observer(({ card, vendor, vendorId, productId, alert }) => {
         </div>
         <div style={{textAlign: 'center'}} className='text-black-50 product-item__vendor-name'>{vendor}</div>
       </Card>
-      <Button style={{width: 190}} className="rounded-0" variant="outline-success" size="sm" onClick={addProduct} disabled={!user.isAuth}>Добавить в корзину</Button>
+      {/* <Button 
+        style={{width: 190}} 
+        className="rounded-0" 
+        variant={
+          Object.keys(product.basket).includes(productId + '') ?
+          "success" :
+          "outline-success"
+        } 
+        size="sm" 
+        onClick={addProduct} 
+        disabled={!user.isAuth}
+        >
+          {Object.keys(product.basket).includes(productId + '') ? 'Добавить ещё' : 'Добавить в корзину'}
+      </Button> */}
+      <ButtonWithCounter productId={productId} addProduct={addProduct} deleteProduct={deleteProduct} card={card} />
     </Col>
     
   );
