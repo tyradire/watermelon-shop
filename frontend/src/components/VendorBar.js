@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { ListGroup } from 'react-bootstrap';
 import { Context } from '../index';
 import { getVendors } from '../utils/VendorApi';
+import './VendorBar.css';
 
 const VendorBar = observer(() => {
   
@@ -15,7 +16,7 @@ const VendorBar = observer(() => {
   })
 
   return (
-    <ListGroup>
+    <ListGroup className='vendor-bar'>
       <ListGroup.Item style={{cursor: 'pointer', fontWeight: 'bold'}} onClick={() => product.setSelectedVendor({id: '', name: ''})}>
         Все продавцы
       </ListGroup.Item>

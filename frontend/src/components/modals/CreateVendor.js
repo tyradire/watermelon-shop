@@ -6,14 +6,6 @@ const CreateVendor = ({ show, onHide }) => {
 
   const [value, setValue] = useState('');
 
-  // function addVendor() {
-  //   createVendor({name: value})
-  //   .then(data => {
-  //     setValue('');
-  //     onHide();
-  //   })
-  // }
-
   const addVendor = () => {
     createVendor({name: value}).then(data => {
       setValue('');

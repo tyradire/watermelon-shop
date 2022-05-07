@@ -12,22 +12,10 @@ const CreateProduct = observer(({ show, onHide }) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [file, setFile] = useState(null);
-  const [info, setInfo] = useState([]);
+  const [info, setInfo] = useState('');
 
   const selectFile = (e) => {
     setFile(e.target.files[0]);
-  }
-
-  const addInfo = () => {
-    setInfo([...info, {title: '', description: '', number: Date.now()}])
-  };
-
-  const removeInfo = (number) => {
-    setInfo(info.filter(i => i.number !== number))
-  };
-
-  const changeInfo = (key, value, number) => {
-    setInfo(info.map(i => i.number === number ? {...i, [key]: value} : i))
   }
 
   const addProduct = () => {
@@ -37,7 +25,7 @@ const CreateProduct = observer(({ show, onHide }) => {
     formData.append('price', `${price}`);
     formData.append('img', file);
     formData.append('vendorId', product.selectedVendor);
-    // formData.append('info', JSON.stringify(info));
+    formData.append('info', info);
     createProduct(formData).then(data => onHide())
     //createProduct({name, price, vendorId: product.selectedVendor.id}).then(data => onHide())
   }
@@ -78,49 +66,22 @@ const CreateProduct = observer(({ show, onHide }) => {
             />
             <Form.Control 
               className='mt-3'
-              value={price}
+              value={price || 'Введите стоимость продукта'}
               onChange={e => setPrice(Number(e.target.value))}
               placeholder='Введите стоимость продукта'
               type='number'
             />
             <Form.Control 
               className='mt-3'
+              value={info}
+              onChange={e => setInfo(e.target.value)}
+              placeholder='Введите описание продукта'
+            />
+            <Form.Control 
+              className='mt-3'
               type='file'
               onChange={selectFile}
             />
-            <hr/>
-            <Button
-              variant='outline-dark'
-              onClick={addInfo}
-            >
-              Добавить новое свойство
-            </Button>
-            {info.map(i =>
-              <Row className='mt-3' key={i.number}>
-                <Col md={4}>
-                  <Form.Control 
-                    value={i.title}
-                    onChange={(e) => changeInfo('title', e.target.value, i.number)}
-                    placeholder='Введите название свойства'
-                  />
-                </Col>
-                <Col md={4}>
-                  <Form.Control 
-                    value={i.description}
-                    onChange={(e) => changeInfo('description', e.target.value, i.number)}
-                    placeholder='Введите описание свойства'
-                  />
-                </Col>
-                <Col md={4}>
-                  <Button
-                    variant='outline-danger'
-                    onClick={() => removeInfo(i.number)}
-                  >
-                    Удалить
-                  </Button>
-                </Col>
-              </Row>
-            )}
           </Dropdown>
         </Form>
       </Modal.Body>

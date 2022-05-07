@@ -4,6 +4,7 @@ const ConflictError = require('../errors/ConflictError');
 
 const addLike = (req, res, next) => {
   const id = req.params.id;
+  console.log('ПОЛЬЗОВАТЕЛЬ: ', req.user.id)
   Like.findOne({
     where: { 
       productId: id 
