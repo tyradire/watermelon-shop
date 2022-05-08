@@ -68,20 +68,6 @@ const ProductItem = observer(({ card, vendor, vendorId, productId, alert }) => {
         </div>
         <div style={{textAlign: 'center'}} className='text-black-50 product-item__vendor-name'>{vendor}</div>
       </Card>
-      {/* <Button 
-        style={{width: 190}} 
-        className="rounded-0" 
-        variant={
-          Object.keys(product.basket).includes(productId + '') ?
-          "success" :
-          "outline-success"
-        } 
-        size="sm" 
-        onClick={addProduct} 
-        disabled={!user.isAuth}
-        >
-          {Object.keys(product.basket).includes(productId + '') ? 'Добавить ещё' : 'Добавить в корзину'}
-      </Button> */}
       <ButtonWithCounter productId={productId} addProduct={addProduct} deleteProduct={deleteProduct} card={card} />
     </Col>
     
