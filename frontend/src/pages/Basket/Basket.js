@@ -79,7 +79,8 @@ const Basket = observer(() => {
       <BasketPageList />
       <div>
         <div className='basket-page__sidebar'>
-          <p className='basket-page__input-title'>Выберите дату доставки</p>
+          <p className='basket-page__info'>Доставить на дом:</p>
+          <p className='basket-page__input-subtitle'>Выберите дату доставки</p>
           <input 
           className='basket-page__input basket-page__input_date' 
           min={todayDate} 
@@ -89,7 +90,7 @@ const Basket = observer(() => {
           value={inputDate}
           onChange={(e) => setInputDate(e.target.value)}
           ></input>
-          <p className='basket-page__input-title' >Введите email</p>
+          <p className='basket-page__input-subtitle' >Введите email</p>
           <input 
             className='basket-page__input' 
             value={inputEmail} 
@@ -97,7 +98,7 @@ const Basket = observer(() => {
             onChange={(e) => setInputEmail(e.target.value)}
             placeholder='example@example.com'
           ></input>
-          <p className='basket-page__input-title'>Введите номер телефона</p>
+          <p className='basket-page__input-subtitle'>Введите номер телефона</p>
           <input 
             type={'tel'}
             value={inputPhone}
