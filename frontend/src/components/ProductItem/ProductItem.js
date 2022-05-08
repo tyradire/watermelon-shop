@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Card, Col, Image } from 'react-bootstrap';
+import { Card, Col, Image } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import likeBtn from '../../assets/like.svg';
 import likeBtnActive from '../../assets/like-active.svg';
