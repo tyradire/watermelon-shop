@@ -51,8 +51,8 @@ const ProductItem = observer(({ card, vendor, vendorId, productId, alert }) => {
   // src={like ? likeBtn : likeBtnActive}
 
   return (
-    <Col md={3} className='product-item' >
-      <Card style={{width: 190}} border={'light'} bg={'light'} >
+    <Col md={3}>
+      <Card className='mt-4' style={{width: 190}} border={'light'} bg={'light'} >
         <Image className='product-item__image' width={190} height={190} src={process.env.REACT_APP_PUBLIC_URL + card.img} onClick={() => navigate(PRODUCT_ROUTE + '/' + card.id)}/>
         <div className='text-black-50 mt-1 mx-1 d-flex justify-content-between align-items-center'>
           <div className='product-item__product-name'>{card.name}</div>

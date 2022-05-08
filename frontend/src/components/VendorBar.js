@@ -16,13 +16,15 @@ const VendorBar = observer(() => {
   })
 
   return (
-    <ListGroup className='vendor-bar'>
-      <ListGroup.Item style={{cursor: 'pointer', fontWeight: 'bold'}} onClick={() => product.setSelectedVendor({id: '', name: ''})}>
+    <ListGroup className='vendor-bar' >
+      <ListGroup.Item action variant="light" className='vendor-bar__item' style={{cursor: 'pointer', fontWeight: 'bold'}} onClick={() => product.setSelectedVendor({id: '', name: ''})}>
         Все продавцы
       </ListGroup.Item>
       {Object.keys(product.vendors).map(vendor => 
         <ListGroup.Item 
-          style={{cursor: 'pointer'}}
+          action 
+          variant="light"
+          className='vendor-bar__item'
           active={vendor === product.selectedVendor.id}
           onClick={() => product.setSelectedVendor({id: vendor, name:product.vendors[vendor]})}
           key={vendor}>

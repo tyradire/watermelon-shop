@@ -1,3 +1,7 @@
 .vendor-bar {
   margin-top: 10px;
 }
+
+.vendor-bar__item {
+  width: 260px;
+}
