@@ -1,0 +1,35 @@
+.register-checkbox__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.register-checkbox__help {
+  position: absolute;
+  display: none;
+  opacity: 0;
+  top: 50px;
+  left: 50px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #000000;
+}
+
+.register-checkbox__tooltip {
+  border: 1px dashed #000000;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.register-checkbox__tooltip:hover {
+  background-color: #198754;
+  color: #ffffff;
+  border-style: solid;
+}
+
+.register-checkbox__tooltip:hover .register-checkbox__help {
+  display: block;
+}
