@@ -13,6 +13,10 @@ const Register = ({ onSubmitRegister, registerError }) => {
     onSubmitRegister(email, password);
   }
 
+  // window.addEventListener('mousemove', function(evt) {
+  //   console.log(evt.target)
+  // })
+
   return (
     <Form className='d-flex flex-column'>
       <Form.Control 
@@ -33,13 +37,13 @@ const Register = ({ onSubmitRegister, registerError }) => {
         <Form.Check 
           type="switch"
           id="custom-switch"
-          className='mx-auto my-2'
+          className='my-2'
           label="Зарегистрироваться как администратор"
         />
-        <div className='register-checkbox__tooltip'>?</div>
-      </div>
+      <div className='register-checkbox__tooltip'>?</div>
       <div className='mx-auto register-checkbox__help' >
         Администратор может добавлять продавцов и продукты.
+      </div>
       </div>
       <Col
         className='d-flex justify-content-between mt-1 pl-3 pr-3'
