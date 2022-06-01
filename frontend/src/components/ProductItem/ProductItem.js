@@ -51,24 +51,22 @@ const ProductItem = observer(({ card, vendor, vendorId, productId, alert }) => {
   // src={like ? likeBtn : likeBtnActive}
 
   return (
-    <Col md={3}>
-      <Card className='mt-4' style={{width: 190}} border={'light'} bg={'light'} >
-        <Image className='product-item__image' width={190} height={190} src={process.env.REACT_APP_PUBLIC_URL + card.img} onClick={() => navigate(PRODUCT_ROUTE + '/' + card.id)}/>
-        <div className='text-black-50 mt-1 mx-1 d-flex justify-content-between align-items-center'>
+    <Col>
+      <Card className='mt-4 product-item__card' border={'light'} bg={'light'} >
+        <Image className='product-item__image' src={process.env.REACT_APP_PUBLIC_URL + card.img} onClick={() => navigate(PRODUCT_ROUTE + '/' + card.id)}/>
+        <div className='text-black-50 mt-1 mx-1 product-item__info-wrapper'>
           <div className='product-item__product-name'>{card.name}</div>
           <div className='d-flex align-items-center'>
             <Image className='product-item__like-btn'
-              width={16} 
-              height={16} 
               src={
                 user.likes.includes(productId) ? likeBtnActive : likeBtn
               }
               onClick={user.isAuth ? toggleLike : notAuth}/>
           </div>
         </div>
-        <div style={{textAlign: 'center'}} className='text-black-50 product-item__vendor-name'>{vendor}</div>
+        <div className='product-item__vendor-name'>{vendor}</div>
       </Card>
-      <ButtonWithCounter productId={productId} addProduct={addProduct} deleteProduct={deleteProduct} card={card} />
+      <ButtonWithCounter className='product-item__button-component' productId={productId} addProduct={addProduct} deleteProduct={deleteProduct} card={card} />
     </Col>
     
   );
