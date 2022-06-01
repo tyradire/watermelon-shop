@@ -61,3 +61,27 @@
 .button-counter__add-btn:hover {
   color: #198754;
 }
+
+@media screen and (max-width: 500px) {
+  .button-counter {
+    width: 360px;
+    height: 50px;
+    margin: 0 auto 20px;
+  }
+  .button-counter__add-btn {
+    height: 50px;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .button-counter {
+    width: 300px;
+    height: 50px;
+    margin: 0 auto 10px;
+  }
+  .button-counter__add-btn {
+    height: 40px;
+    padding: 5px;
+  }
+}

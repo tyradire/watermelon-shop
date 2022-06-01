@@ -6,6 +6,7 @@ import { Button, Container, Navbar, Nav } from 'react-bootstrap';
 import { SHOP_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE, BASKET_ROUTE, FAVOURITES_ROUTE } from '../../utils/consts';
 import BasketContainer from '../BasketContainer/BasketContainer';
 import like from '../../assets/like-active.svg';
+import './NavBar.css';
 
 const NavBar = observer(() => {
 
@@ -27,7 +28,7 @@ const NavBar = observer(() => {
 
   return (
     <Navbar className='p-0 navbar' bg="dark" variant="dark">
-      <Container>
+      <Container className='navbar__container'>
         <Nav>
         <Navbar.Brand className="text-decoration-none text-white" href={SHOP_ROUTE}>
           Watermelon Shop
@@ -47,7 +48,7 @@ const NavBar = observer(() => {
           </Nav>
           :
           <Nav>
-            <Button variant={'outline-light'} onClick={() => navigate(LOGIN_ROUTE)} className="m-2">Авторизация</Button>
+            <Button variant={'outline-light'} onClick={() => navigate(LOGIN_ROUTE)} className="navbar__auth-button">Авторизация</Button>
           </Nav>
         }
       </Container>
