@@ -5,12 +5,15 @@ const ConflictError = require('../errors/ConflictError');
 const addLike = (req, res, next) => {
   const id = req.params.id;
   console.log('ПОЛЬЗОВАТЕЛЬ: ', req.user.id)
+  console.log('Лайк: ', req.user)
   Like.findOne({
     where: { 
-      productId: id 
+      productId: id,
+      userId: req.user.id 
     }
   })
   .then((like) => {
+    console.log(like)
     if (like) throw new ConflictError('Лайк уже поставлен');
     return id;
   })
@@ -25,7 +28,10 @@ const addLike = (req, res, next) => {
 const deleteLike = (req, res, next) => {
   const id = req.params.id
   Like.destroy({
-    where: { productId: id }
+    where: { 
+      productId: id,
+      userId: req.user.id
+    }
   })
   .then((item) => res.status(200).send({item}))
   .catch(next);
