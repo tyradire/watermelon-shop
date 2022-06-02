@@ -64,24 +64,25 @@
 
 @media screen and (max-width: 500px) {
   .button-counter {
-    width: 360px;
-    height: 50px;
+    width: 310px;
     margin: 0 auto 20px;
   }
   .button-counter__add-btn {
-    height: 50px;
-    padding: 10px;
+    height: 40px;
+    padding: 8px;
+  }
+  .button-counter__quantity-wrapper {
+    height: 40px;
+  }
+  .button-counter__count-btn {
+    width: 32px;
+    height: 32px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .button-counter {
     width: 300px;
-    height: 50px;
     margin: 0 auto 10px;
-  }
-  .button-counter__add-btn {
-    height: 40px;
-    padding: 5px;
   }
 }

@@ -3,7 +3,6 @@ import burgerButton from '../../assets/burger.svg';
 import { BASKET_ROUTE, FAVOURITES_ROUTE } from '../../utils/consts';
 import { Context } from '../../index';
 import like from '../../assets/like-active.svg';
-import basket from '../../assets/basket-empty.png';
 import './BurgerButton.css';
 
 const BurgerButton = () => {

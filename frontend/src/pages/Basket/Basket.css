@@ -67,3 +67,14 @@
 .basket-page__input_date::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
+
+@media screen and (max-width: 500px) {
+  .basket-page__container {
+    flex-direction: column-reverse;
+    max-width: 320px;
+    margin: 0 auto;
+  } 
+  .basket-page__sidebar {
+    margin: 20px auto;
+  }
+}
