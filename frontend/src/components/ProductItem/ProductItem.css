@@ -38,29 +38,29 @@
 
 @media screen and (max-width: 500px) {
   .product-item__card {
-    max-width: 360px;
+    max-width: 310px;
     margin: 0 auto;
   }
   .product-item__image {
-    width: 360px;
-    height: 360px;
+    width: 310px;
+    height: 310px;
     border-radius: 4px 4px 0 0;
     cursor: pointer;
   }
   .product-item__like-btn {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
   }
   .product-item__product-name {
-    font-size: 22px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 20px;
     font-weight: 600;
     color: black;
     margin-right: 40px;
   }
   .product-item__info-wrapper {
     justify-content: center;
-    padding: 12px 0;
+    padding: 4px 0;
   }
   .product-item__vendor-name {
     display: none;
@@ -79,8 +79,8 @@
     cursor: pointer;
   }
   .product-item__like-btn {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
   .product-item__info-wrapper {
     padding: 10px 0;
