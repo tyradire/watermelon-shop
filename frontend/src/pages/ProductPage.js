@@ -8,6 +8,7 @@ import plug from '../assets/image-plug.png';
 import likeBtnActive from '../assets/like-active.svg';
 import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
+import './ProductPage.css';
 
 const ProductPage = observer(() => {
 
@@ -33,7 +34,7 @@ const ProductPage = observer(() => {
   }, []);
 
   return (
-    <Container className='mt-5 d-flex'>
+    <Container className='product__container'>
       <Col md={4}>
         <Image width={300} height={300} src={pageItem.img ? process.env.REACT_APP_PUBLIC_URL + pageItem.img : plug}/>
       </Col>
@@ -48,13 +49,8 @@ const ProductPage = observer(() => {
           {pageItem.price} &#8381;
           <Button variant={'outline-dark'} className='ms-5 mr-3' onClick={addProduct}>Купить</Button>
         </div>
-      </Col>
+        </Col>
       <Col md={4}>
-        {/* <div 
-          className='d-flex align-items-center justify-content-center mt-5'
-          style={{background: `url(${likeBtn}) no-repeat center center`, width: 40, height: 40, backgroundSize: 'contain'}}
-        >
-        </div> */}
         <Image
           className='d-flex align-items-center justify-content-center mt-5'
           width={30}
