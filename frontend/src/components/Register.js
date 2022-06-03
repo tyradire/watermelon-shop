@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Button, Col, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LOGIN_ROUTE } from '../utils/consts';
+import './Register.css';
 
 const Register = ({ onSubmitRegister, registerError }) => {
 
@@ -11,6 +12,10 @@ const Register = ({ onSubmitRegister, registerError }) => {
   const handleSubmit = () => {
     onSubmitRegister(email, password);
   }
+
+  // window.addEventListener('mousemove', function(evt) {
+  //   console.log(evt.target)
+  // })
 
   return (
     <Form className='d-flex flex-column'>
@@ -28,8 +33,20 @@ const Register = ({ onSubmitRegister, registerError }) => {
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
+      <div className='register-checkbox__container'>
+        <Form.Check 
+          type="switch"
+          id="custom-switch"
+          className='my-2'
+          label="Зарегистрироваться как администратор"
+        />
+      <div className='register-checkbox__tooltip'>?</div>
+      <div className='mx-auto register-checkbox__help' >
+        Администратор может добавлять продавцов и продукты.
+      </div>
+      </div>
       <Col
-        className='d-flex justify-content-between mt-3 pl-3 pr-3'
+        className='d-flex justify-content-between mt-1 pl-3 pr-3'
       >
         <div>Есть аккаунт? <Link to={LOGIN_ROUTE}>Войти</Link></div>
         <Button

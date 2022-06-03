@@ -127,3 +127,40 @@
   line-height: 16px;
   color: #198754;
 }
+
+@media screen and (max-width: 500px) {
+  .basket-card {
+    max-width: 300px;
+    height: 100%;
+    margin: 10px auto;
+    flex-direction: column;
+  }
+  .basket-card__image {
+    width: 298px;
+    height: 298px;
+  }
+  .basket-card__product-cost {
+    width: 298px;
+    flex-direction: row;
+    margin: 6px 6px 10px 6px;
+    text-align: center;
+  }
+  .basket-card__delete-btn {
+    width: 24px;
+    color: #ff6666;
+    font-size: 22px;
+    line-height: 24px;
+    margin: 0 0 5px 10px;
+  }
+  .basket-card__quantity-wrapper {
+    margin-bottom: 0px;
+    margin-left: 30px;
+    justify-content: space-between;
+    padding: 5px;
+    width: 120px;
+  }
+  .basket-card__total-price {
+    width: 80px;
+    margin: 0;
+  }
+}

@@ -47,11 +47,10 @@ const Auth = observer(() => {
 
   return (
     <Container
-      className='d-flex justify-content-center align-items-center'
-      style={{height: window.innerHeight - 54}}
+      className='auth'
     >
-      <Card className='p-5 card'>
-        <h2 className='m-auto'>
+      <Card className='card auth__card'>
+        <h2 className='auth__title'>
           {isLogin ? 'Авторизация' : 'Регистрация'}
         </h2>
         {

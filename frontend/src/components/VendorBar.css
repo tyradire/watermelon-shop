@@ -5,3 +5,16 @@
 .vendor-bar__item {
   width: 260px;
 }
+
+@media screen and (max-width: 500px) {
+  .vendor-bar__item {
+    margin: 0 auto;
+    width: 310px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .vendor-bar__item {
+    width: 300px;
+  }
+}
