@@ -1,17 +1,22 @@
-import React, {useState} from 'react';
-import { Button, Col, Form } from 'react-bootstrap';
+import { observer } from 'mobx-react-lite';
+import React, {useContext, useState} from 'react';
+import { Col, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LOGIN_ROUTE } from '../utils/consts';
+import {Context} from "../index";
 import './Register.css';
 
-const Register = ({ onSubmitRegister, registerError }) => {
+const Register = observer(({ onSubmitRegister, registerError }) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [check, setCheck] = useState(false)
 
+  const {user} = useContext(Context)
+
   const handleSubmit = () => {
     onSubmitRegister(email, password, handleRole());
+    user.setIsReg(true);
   }
 
   const handleRole = () => {
@@ -63,6 +68,6 @@ const Register = ({ onSubmitRegister, registerError }) => {
       </Col>
     </Form>
   );
-};
+});
 
 export default Register;

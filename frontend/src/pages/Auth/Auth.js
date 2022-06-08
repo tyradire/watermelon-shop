@@ -8,6 +8,7 @@ import { Context } from '../../index';
 import './Auth.css';
 import Register from '../../components/Register';
 import Login from '../../components/Login';
+import RegisterUser from '../../components/modals/RegisterUser';
 
 const Auth = observer(() => {
 
