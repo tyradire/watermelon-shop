@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { LOGIN_ROUTE } from '../utils/consts';
 import {Context} from "../index";
 import './Register.css';
+import RegisterUserError from './modals/RegisterUserError';
 
 const Register = observer(({ onSubmitRegister, registerError }) => {
 
@@ -25,6 +26,7 @@ const Register = observer(({ onSubmitRegister, registerError }) => {
 
   return (
     <Form className='d-flex flex-column'>
+      {user.isRegErr ? <RegisterUserError /> : ''}
       <Form.Control 
         className='mt-3'
         placeholder='Введите ваш Email'

@@ -8,7 +8,6 @@ import { Context } from '../../index';
 import './Auth.css';
 import Register from '../../components/Register';
 import Login from '../../components/Login';
-import RegisterUser from '../../components/modals/RegisterUser';
 
 const Auth = observer(() => {
 
@@ -26,9 +25,7 @@ const Auth = observer(() => {
       handleLoginSubmit(email, password);
     })
     .catch((err) => {
-      console.log(err);
-      console.log(email, password, role);
-      setRegisterError(ERRORS[err]);
+      user.setIsRegErr(true);
     })
   }
 
