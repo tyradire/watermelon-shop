@@ -22,7 +22,7 @@ const CreateOrder = observer(({ inputPhone, inputDate, inputEmail, productCount,
     <div>
       <Button 
         className='h-75 mb-2 d-flex mx-auto px-5'
-        variant="outline-success" 
+        variant="success" 
         size="sm" 
         disabled={!(inputPhone && inputDate && inputEmail && priceCount !== 0)} 
         onClick={handleShow}
