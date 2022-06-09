@@ -94,22 +94,22 @@
 @media screen and (max-width: 768px) {
   .basket-page__container {
     max-width: 460px;
-    justify-content: center;
+    flex-direction: column-reverse;
     padding-top: 60px;
   }
   .basket-page__sidebar {
-    width: 200px;
-    margin-left: 10px;
+    width: 380px;
+    margin: 20px auto;
   }
 }
 
 @media screen and (max-width: 500px) {
   .basket-page__container {
-    flex-direction: column-reverse;
     max-width: 320px;
     margin: 0 auto;
   } 
   .basket-page__sidebar {
+    width: 300px;
     margin: 20px auto;
   }
 }

@@ -16,6 +16,7 @@
 
 .navbar__logo-link:hover {
   color: #b3b3b3;
+  opacity: .5;
 }
 
 .navbar__favourites-button {
