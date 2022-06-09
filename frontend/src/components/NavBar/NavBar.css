@@ -155,6 +155,9 @@
     content: url('../../assets/watermelon.svg');
     visibility: visible;
   }
+  .navbar__logo-link:hover {
+    transform: rotate(-15deg);
+  }
   .navbar__favourites-button {
     font-size: 15px;
     line-height: 15px;

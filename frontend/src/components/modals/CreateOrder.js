@@ -20,13 +20,11 @@ const CreateOrder = observer(({ inputPhone, inputDate, inputEmail, productCount,
 
   return (
     <div>
-      <Button 
-        className='h-75 mb-2 d-flex mx-auto px-5'
-        variant="success" 
-        size="sm" 
+      <button 
+        className='order__submit-button'
         disabled={!(inputPhone && inputDate && inputEmail && priceCount !== 0)} 
         onClick={handleShow}
-      >Купить</Button>
+      >Купить</button>
       <Modal size="sm" show={show} onHide={handleClose} >
         <Modal.Header className='order__header'  closeButton>
           <Modal.Title>Подтверждение</Modal.Title>
