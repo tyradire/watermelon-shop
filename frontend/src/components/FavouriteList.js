@@ -23,4 +23,3 @@ const FavouriteList = observer(() => {
 });
 
 export default FavouriteList;
-

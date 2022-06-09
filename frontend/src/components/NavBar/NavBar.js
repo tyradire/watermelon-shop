@@ -60,7 +60,7 @@ const NavBar = observer(() => {
             (
               !isMobile ?
               <a className={`navbar__favourites-button  d-inline ${isFavourites ? 'text-danger' : ''}`} href={FAVOURITES_ROUTE}>
-                Favourites <img src={like} alt="Лайк" width={16} height={16} />
+                Избранное <img src={like} alt="Лайк" width={16} height={16} />
               </a> :
               <BurgerButton signOut={signOut} />
             )

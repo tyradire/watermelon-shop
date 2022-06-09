@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react-lite';
 import React, { useContext } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
 import Empty from '../components/Empty/Empty';
 import FavouriteList from '../components/FavouriteList';
 import VendorBar from '../components/VendorBar';
@@ -17,10 +16,10 @@ const Favourites = observer(() => {
         <div>
           <VendorBar />
         </div>
-        <div>
+        <div className='favourites__wrapper'>
           { user.likes.length > 0
             ? <FavouriteList /> 
-            : <Empty location={'избранном'} />
+            : <Empty location={'избранном'}  />
           }
         </div>
       </div>
