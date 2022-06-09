@@ -40,6 +40,7 @@
 .navbar__user-side {
   display: flex;
   align-items: center;
+  text-align: center;
 }
 
 .navbar__email {
@@ -73,11 +74,21 @@
 }
 
 .navbar__admin-button {
+  color: #fff;
   width: 100px;
   height: 40px;
   font-size: 12px;
   padding: 0;
-  margin: 0;
+  margin: 0 10px;
+  padding-top: 8px;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+}
+
+.navbar__admin-button:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: #dc3545;
 }
 
 .navbar__login-button {
