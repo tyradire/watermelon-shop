@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Image } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { getOneProduct } from '../utils/ProductApi';
 import { addToBasket } from '../utils/BasketApi';
 import { useParams } from 'react-router-dom';
@@ -9,6 +9,7 @@ import likeBtnActive from '../assets/like-active.svg';
 import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
 import './ProductPage.css';
+import { addLike, deleteLike } from '../utils/LikeApi';
 
 const ProductPage = observer(() => {
 
@@ -16,6 +17,8 @@ const ProductPage = observer(() => {
   const {user} = useContext(Context)
   const [pageItem, setPageItem] = useState({info: []})
   const {id} = useParams();
+
+  let likeStatus = user.likes.includes(parseInt(id));
 
   const addProduct = () => {
     addToBasket(id)
@@ -32,6 +35,23 @@ const ProductPage = observer(() => {
     .then(product => setPageItem(product))
     .catch(err => console.log(err))
   }, []);
+
+  const productPageLike = () => {
+    if (user.likes.includes(parseInt(id))) {
+      deleteLike(id)
+      .then(res => {
+        user.deleteLikeById(parseInt(id))
+        likeStatus = false;
+      })
+      .catch(err => console.log(err))
+    } else {
+    addLike(id)
+    .then(res => {
+      user.addLikeById(parseInt(id))
+      likeStatus = true;
+    })
+    .catch(err => console.log(err))}
+  }
 
   return (
     <div className='product-page'>
@@ -55,6 +75,7 @@ const ProductPage = observer(() => {
           src={
             user.likes.includes(parseInt(id)) ? likeBtnActive : likeBtn
           }
+          onClick={productPageLike}
         />
       </div>
     </div>
