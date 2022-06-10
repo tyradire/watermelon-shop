@@ -36,7 +36,7 @@ const ProductPage = observer(() => {
   return (
     <Container className='product__container'>
       <Col md={4}>
-        <Image width={300} height={300} src={pageItem.img ? process.env.REACT_APP_PUBLIC_URL + pageItem.img : plug}/>
+        <Image  width={300} height={300} src={pageItem.img ? process.env.REACT_APP_PUBLIC_URL + pageItem.img : plug}/>
       </Col>
       <Col md={4} className='mt-4'>
         <Row className='d-flex flex-column align-items-center'>
