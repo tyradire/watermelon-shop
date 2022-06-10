@@ -23,6 +23,7 @@
 }
 
 .product-page__text-container {
+  margin-left: 30px;
   width: 760px;
 }
 
@@ -72,6 +73,7 @@
     height: 240px;
   }
   .product-page__text-container {
+    margin-right: 40px;
     width: 400px;
   }
   .product-page__title {
@@ -133,6 +135,7 @@
     width: 300px;
   }
   .product-page__title {
+    margin-top: 20px;
     font-size: 18px;
     line-height: 19px;
     padding-bottom: 2px;
