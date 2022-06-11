@@ -119,7 +119,9 @@ const Basket = observer(() => {
             disabled={!(inputPhone && inputDate && inputEmail)} 
             onClick={handleShow}
           >Купить</Button> */}
-          
+          { !(inputPhone && inputDate && inputEmail && priceCount !== 0) ?
+            <span className='basket-page__submit-note'>Для заказа заполните все поля</span>
+          : ''}
         </div>
       </div>
     </div>

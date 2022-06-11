@@ -1,8 +1,8 @@
 .basket-page__container {
   display: flex;
   justify-content: space-between;
-  width: 1280px;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: 40px auto 0;
 }
 
 .basket-page__sidebar {
@@ -74,10 +74,12 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1300px) {
-  .basket-page__container {
-    max-width: 1000px;
-  }
+.basket-page__submit-note {
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 300;
+  color: #ced4da;
+  padding-bottom: 5px;
 }
 
 @media screen and (max-width: 1024px) {
