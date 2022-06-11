@@ -103,7 +103,7 @@ const Basket = observer(() => {
             type={'tel'}
             value={inputPhone}
             data-tel-input
-            placeholder='+1 (123) 456-78-90'
+            placeholder='+7 (123) 456-78-90'
             className='basket-page__input' 
             maxLength={18}
             onChange={(e) => editPhone(e)}
