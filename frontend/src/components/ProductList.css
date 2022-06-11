@@ -45,6 +45,6 @@
     margin: 0 auto;
     max-width: 280px;
     grid-template-columns: repeat(1, 280px);
-    gap: 24px;
+    gap: 24px 0px;
   }
 }
