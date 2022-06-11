@@ -1,5 +1,8 @@
 .vendor-bar {
   margin-top: 10px;
+  border: 1px solid #99ca74;
+  border-radius: 6px;
+  background-color: #fff;
 }
 
 .vendor-bar__item {
@@ -7,6 +10,19 @@
   font-size: 15px;
   line-height: 16px;
   font-weight: 400;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.vendor-bar__red {
+  background-color: #99ca74;
+  font-weight: 600;
+  color: #fff;
+}
+
+.vendor-bar__item:hover {
+  background-color: #99ca74;
+  color: #fff;
 }
 
 @media screen and (max-width: 1600px) {
