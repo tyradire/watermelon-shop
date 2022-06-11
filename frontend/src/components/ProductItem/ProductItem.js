@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Col, Image } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import likeBtn from '../../assets/like.svg';
 import likeBtnActive from '../../assets/like-active.svg';
 import { PRODUCT_ROUTE } from '../../utils/consts';
@@ -63,17 +63,16 @@ const ProductItem = observer(({ card, vendor, vendorId, productId, alert }) => {
           <Image className='product-item__image' src={process.env.REACT_APP_PUBLIC_URL + card.img} onClick={() => navigate(PRODUCT_ROUTE + '/' + card.id)}/>
           <button className='product-item__delete-button' onClick={() => deleteProductFull()}>Х</button>
         </div>
-        <div className='text-black-50 mt-1 mx-1 product-item__info-wrapper'>
-          <div className='product-item__product-name'>{card.name}</div>
-          <div className='d-flex align-items-center'>
-            <Image className='product-item__like-btn'
-              src={
-                user.likes.includes(productId) ? likeBtnActive : likeBtn
-              }
-              onClick={user.isAuth ? toggleLike : notAuth}/>
-          </div>
+        <div className='product-item__info-wrapper'>
+          <Link className='product-item__product-name' to={(PRODUCT_ROUTE + '/' + card.id)}>{card.name}</Link>
+          <img className='product-item__like-btn'
+            alt='лайк'
+            src={
+              user.likes.includes(productId) ? likeBtnActive : likeBtn
+            }
+            onClick={user.isAuth ? toggleLike : notAuth}/>
         </div>
-        <div className='product-item__vendor-name'>{vendor}</div>
+        {/* <div className='product-item__vendor-name'>{vendor}</div> */}
       </div>
       <ButtonWithCounter className='product-item__button-component' productId={productId} addProduct={addProduct} deleteProduct={deleteProduct} card={card} />
     </Col>
