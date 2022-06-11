@@ -9,6 +9,12 @@
   font-weight: 400;
 }
 
+@media screen and (max-width: 1600px) {
+  .vendor-bar__item {
+    width: 216px;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .vendor-bar {
     width: 200px;
