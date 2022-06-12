@@ -73,7 +73,7 @@
 .button-counter__add-btn:hover {
   background-color: #fff;
   color: #99ca74;
-  border: 1px solid #99ca74;
+  outline: 1px solid #99ca74;
 }
 
 @media screen and (max-width: 1300px) {

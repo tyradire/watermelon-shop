@@ -10,6 +10,7 @@ import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
 import './ProductPage.css';
 import { addLike, deleteLike } from '../utils/LikeApi';
+import ButtonWithCounter from '../components/ButtonWithCounter/ButtonWithCounter';
 
 const ProductPage = observer(() => {
 
@@ -62,9 +63,13 @@ const ProductPage = observer(() => {
         <div className='product-page__text-container'>
           <h2 className='product-page__title'>{pageItem.name}</h2>
           <p className='product-page__description'>{pageItem.info}</p>
-          <div className='d-flex ms-2 mt-3 align-items-center'>
-            {pageItem.price} &#8381;
-            <Button variant={'outline-dark'} className='ms-5 mr-3' onClick={addProduct}>Купить</Button>
+          <div className='product-page__buy-order'>
+            <p className='product-page__price'>{pageItem.price} &#8381;</p>
+            <button 
+            className='product-page__buy-button'
+            onClick={addProduct}
+            >Купить</button>
+            {/* <Button variant={'outline-dark'} className='ms-5 mr-3' onClick={addProduct}>Купить</Button> */}
           </div>
         </div>
         <img
