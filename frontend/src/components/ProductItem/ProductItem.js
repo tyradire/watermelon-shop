@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { Col, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import likeBtn from '../../assets/like.svg';
 import likeBtnActive from '../../assets/like-active.svg';
 import { PRODUCT_ROUTE } from '../../utils/consts';
-import { addToBasket, deleteOnePiece, deleteBasketProduct } from '../../utils/BasketApi';
+import { addToBasket, deleteOnePiece } from '../../utils/BasketApi';
 import {Context} from "../../index";
 import { observer } from 'mobx-react-lite';
 import './ProductItem.css';
