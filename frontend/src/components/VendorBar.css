@@ -5,6 +5,10 @@
   background-color: #fff;
 }
 
+.vendor-bar__all-vendors {
+  display: none;
+}
+
 .vendor-bar__item {
   width: 260px;
   font-size: 15px;

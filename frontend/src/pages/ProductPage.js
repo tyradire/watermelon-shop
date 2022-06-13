@@ -10,7 +10,6 @@ import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
 import './ProductPage.css';
 import { addLike, deleteLike } from '../utils/LikeApi';
-import ButtonWithCounter from '../components/ButtonWithCounter/ButtonWithCounter';
 
 const ProductPage = observer(() => {
 

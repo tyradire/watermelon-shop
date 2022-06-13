@@ -5,7 +5,7 @@ import './ButtonWithCounter.css';
 
 const ButtonWithCounter = observer(({ productId, addProduct, deleteProduct, card }) => {
 
-  const {product} = useContext(Context)
+  const {product} = useContext(Context);
   const {user} = useContext(Context);
 
   return (
