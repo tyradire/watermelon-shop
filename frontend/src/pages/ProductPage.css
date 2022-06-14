@@ -42,6 +42,18 @@
   font-weight: 400;
 }
 
+.product-page__vendor {
+  font-size: 17px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.product-page__vendor:hover {
+  color: #9acd32;
+}
+
 .product-page__buy-order {
   width: 200px;
   height: 30px;
