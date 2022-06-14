@@ -45,18 +45,18 @@ const Auth = observer(() => {
   }
 
   return (
-    <Container
+    <div
       className='auth'
     >
-      <Card className='card auth__card'>
+      <div className='auth__card'>
         <h2 className='auth__title'>
           {isLogin ? 'Авторизация' : 'Регистрация'}
         </h2>
         {
           isLogin ? <Login onSubmitLogin={handleLoginSubmit} loginError={loginError} /> : <Register onSubmitRegister={handleRegisterSubmit} registerError={registerError} />
         }
-      </Card>
-    </Container>
+      </div>
+    </div>
   );
 });
 
