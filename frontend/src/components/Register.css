@@ -1,3 +1,11 @@
+.register__password-check {
+  color: #ff8484;
+  margin: 10px auto 0;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 500;
+}
+
 .register-checkbox__container {
   display: flex;
   align-items: center;
@@ -23,11 +31,12 @@
   margin-left: 20px;
   text-align: center;
   cursor: pointer;
+  font-size: 16px;
+  line-height: 26px;
 }
 
 .register-checkbox__tooltip:hover {
-  background-color: #198754;
-  color: #ffffff;
+  background-color: #daffc8;
   border-style: solid;
 }
 
@@ -60,10 +69,21 @@
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
+  border: none;
+}
+
+.register__button:disabled {
+  opacity: .5;
+  color: #fff;
 }
 
 .register__button:hover {
   color: #46dd00;
+}
+
+.register__button:hover:disabled {
+  cursor: default;
+  color: #fff;
 }
 
 .register__interaction {

@@ -9,13 +9,19 @@ import RegisterUserError from './modals/RegisterUserError';
 
 const Register = observer(({ onSubmitRegister, registerError }) => {
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const [check, setCheck] = useState(false)
+
+  const checkSubmit = (email && password && password === repeatPassword);
+
+  console.log(checkSubmit)
 
   const {user} = useContext(Context)
 
-  const handleSubmit = () => {
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
     onSubmitRegister(email, password, handleRole());
     user.setIsReg(true);
   }
@@ -41,6 +47,13 @@ const Register = observer(({ onSubmitRegister, registerError }) => {
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
+      <Form.Control 
+        className='mt-3'
+        placeholder='Повторно введите пароль'
+        type='password'
+        onChange={e => setRepeatPassword(e.target.value)}
+      />
+      {repeatPassword !== password ? <p className='register__password-check'>Пароль не совпадает</p> : ''}
       <div className='register-checkbox__container'>
         <Form.Check 
           type="switch"
@@ -61,12 +74,13 @@ const Register = observer(({ onSubmitRegister, registerError }) => {
           <p className='register__account-text'>Есть аккаунт?</p> 
           <Link className='register__link' to={LOGIN_ROUTE}>Войти</Link>
         </div>
-        <div
-          onClick={handleSubmit}
+        <button
+          onClick={(evt) => handleSubmit(evt)}
           className='register__button'
+          disabled={!checkSubmit}
         >
           Регистрация
-        </div>
+        </button>
       </Col>
     </Form>
   );
