@@ -54,11 +54,11 @@
 
 .navbar__login {
   cursor: pointer;
-  color: #46dd00;
+  color: #9acd32;
   font-size: 15px;
   line-height: 15px;
   font-weight: 500;
-  border: 1px solid #46dd00;
+  border: 1px solid #9acd32;
   border-radius: 4px;
   padding: 4px;
   display: flex;
