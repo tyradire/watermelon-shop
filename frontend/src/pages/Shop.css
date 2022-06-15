@@ -18,3 +18,21 @@
     margin: 40px auto;
   }
 }
+
+.shop__search {
+  width: calc(80%);
+  height: 40px;
+  margin: 0 auto 40px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  box-shadow: 0px 0px 12px 3px #b8b8b880;
+  border-radius: 6px;
+  padding-left: 20px;
+  color: #2c2c2ca6;
+}
+
+.shop__search:focus {
+  outline: none;
+  box-shadow: 0px 0px 14px 1px #99ca74;
+}

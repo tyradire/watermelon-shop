@@ -15,6 +15,8 @@ const Shop = observer(() => {
   const {product} = useContext(Context)
   const {user} = useContext(Context)
 
+  const [productSearch, setProductSearch] = useState('');
+
   const alert = () => {
     setShow(true)
     setTimeout(function () {
@@ -28,8 +30,6 @@ const Shop = observer(() => {
     .catch(err => console.log(err))
   }, [])
 
-   
-
   return (
     <div>
       <div className='shop'>
@@ -37,6 +37,12 @@ const Shop = observer(() => {
           <VendorBar />
         </div>
         <div >
+        <input 
+          className="shop__search" 
+          type="search" 
+          placeholder="Поиск ..."
+          onChange={e => setProductSearch(e.target.value)}
+        />
           <ProductList alert={alert} />
         </div>
       </div>
