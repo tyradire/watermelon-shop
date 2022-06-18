@@ -1,4 +1,5 @@
 .navbar-container {
+  position: relative;
   width: 100%;
   height: 60px;
   background-color: #9dc77e;
@@ -119,13 +120,23 @@
 
 @media screen and (max-width: 1300px) {
   .navbar-container {
-    padding: 5px 80px;
+    padding: 5px 20px;
+  }
+  .navbar__email {
+    font-size: 14px;
+    line-height: 14px;
   }
 }
 
 @media screen and (max-width: 1024px) {
+  .navbar-main {
+    display: flex;
+    flex-direction: column;
+    background-color: #9dc77e;
+  }
   .navbar-container {
-    padding: 5px 20px;
+    height: 40px;
+    padding: 5px 20px 0;
   }
   .navbar__logo-link {
     font-size: 15px;
@@ -141,7 +152,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .navbar-container {
+  .navbar-main {
     position: sticky;
     top: 0;
     z-index: 3;
@@ -177,10 +188,9 @@
 
 @media screen and (max-width: 499px) {
   .navbar-container {
-    background-color: #212529;
     display: flex;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 0 20px;
     height: 50px;
   }
 }

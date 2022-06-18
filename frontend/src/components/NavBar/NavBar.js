@@ -50,7 +50,8 @@ const NavBar = observer(() => {
   },[])
 
   return (
-    <div className='navbar-container'>
+    <div className='navbar-main' >
+      <div className='navbar-container'>
       <div className='navbar__nav-side'>
         <Link className="navbar__logo-link" to={SHOP_ROUTE}>
           Watermelon Shop
@@ -66,7 +67,6 @@ const NavBar = observer(() => {
             : ''
         }
       </div>
-      <SearchForm />
       {user.isAuth ?
         (!isMobile ? 
         <div className='navbar__user-side'>
@@ -83,6 +83,8 @@ const NavBar = observer(() => {
           <div className="navbar__login-button"></div>
         </div>
       }
+      </div>
+      <SearchForm />
     </div>
   );
 })
