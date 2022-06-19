@@ -1,5 +1,5 @@
 .register-user__container {
-  position: absolute;
+  position: fixed;
   display: block;
   top: 60vh;
   left: calc(50% - 200px);

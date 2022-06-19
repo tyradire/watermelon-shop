@@ -25,6 +25,16 @@ const getVendors = (req, res, next) => Vendor.findAll()
   })
   .catch(next);
 
+const deleteVendor = (req, res, next) => {
+  console.log(req.body)
+  const { name } = req.body;
+  console.log(name)
+  Vendor.findOne({where: {name} })
+  .then((vendor) => vendor.destroy(name))
+  .then((item) => res.status(200).send('Вендор удалён'))
+  .catch(next);
+}
+
 module.exports = {
-  createVendor, getVendors,
+  createVendor, getVendors, deleteVendor,
 };

@@ -1,7 +1,7 @@
 const appRouter = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const {
-  createVendor, getVendors,
+  createVendor, getVendors, deleteVendor,
 } = require('../controllers/vendors');
 const {
   createProduct, getProducts, getOneProduct,
@@ -38,6 +38,7 @@ appRouter.post('/signup', celebrate({
   }),
 }), createUser);
 appRouter.post('/signin', login);
+appRouter.delete('/deletevendor', deleteVendor);
 
 appRouter.use(verify);
 appRouter.get('/users/me', getUser);
