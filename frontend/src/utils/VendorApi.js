@@ -25,6 +25,20 @@ export const getVendors = () => {
   })
 }
 
+export const deleteVendor = (name) => {
+  return fetch(`${BASE_URL}/deletevendor`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': localStorage.getItem('jwt'),
+    },
+    body: JSON.stringify({ name })
+  })
+  .then((response) => {
+    return checkResponse(response);
+  })
+}
+
 const checkResponse = (response) => {
   return response.ok ? response.json() : Promise.reject(response);
 }

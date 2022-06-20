@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
-import { createVendor } from '../../utils/VendorApi';
+import { Context } from '../../index';
+import { deleteVendor } from '../../utils/VendorApi';
 
-const DeleteProduct = ({ show, onHide }) => {
+const DeleteVendor = ({ show, onHide }) => {
 
-  const [value, setValue] = useState('');
+  const [valueVendor, setValueVendor] = useState('');
 
-  const test = () => {
-    createVendor({name: value}).then(data => {
-      setValue('');
+  const {product} = useContext(Context)
+
+  const deleteVendorButton = () => {
+    deleteVendor(valueVendor)
+    .then(data => {
+      product.deleteVendor(valueVendor);
+      setValueVendor('');
       onHide();
     })
   }
@@ -30,19 +35,19 @@ const DeleteProduct = ({ show, onHide }) => {
       <Modal.Body>
         <Form>
           <Form.Control
-            value={value}
-            onChange={e => setValue(e.target.value)}
+            value={valueVendor}
+            onChange={e => setValueVendor(e.target.value)}
             placeholder='Введите название производителя'
           />
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant='outline-danger' onClick={onHide}>Закрыть</Button>
-        <Button variant='outline-success' onClick={test}>Добавить</Button>
+        <Button variant='outline-success' onClick={deleteVendorButton}>Удалить</Button>
       </Modal.Footer>
     </Modal>
     </div>
   );
 };
 
-export default DeleteProduct;
+export default DeleteVendor;

@@ -38,9 +38,9 @@ appRouter.post('/signup', celebrate({
   }),
 }), createUser);
 appRouter.post('/signin', login);
-appRouter.delete('/deletevendor', deleteVendor);
 
 appRouter.use(verify);
+appRouter.delete('/deletevendor', deleteVendor);
 appRouter.get('/users/me', getUser);
 appRouter.post('/addtobasket/:id', addBasketProduct);
 appRouter.get('/getbasketproducts', getBasketProducts);
