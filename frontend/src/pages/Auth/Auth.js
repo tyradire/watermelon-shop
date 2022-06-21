@@ -35,7 +35,7 @@ const Auth = observer(() => {
       navigate(SHOP_ROUTE);
     })
     .catch((err) => {
-      console.log(err);
+      user.setIsLoginErr(true);
     })
   }
 
