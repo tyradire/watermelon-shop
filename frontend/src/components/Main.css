@@ -2,10 +2,7 @@
 
 .main {
   width: 100%;
-  min-height: 100vh;
-  background-image: url('../assets/watermelon-bg.jpg');
-  background-repeat: repeat;
-  background-color: #fff;
+  height: auto;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
