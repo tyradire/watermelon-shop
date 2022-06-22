@@ -65,6 +65,7 @@
 @media screen and (max-width: 1300px) {
   .search-form {
     left: calc(50% - 160px);
+    box-shadow: none;
   }
 }
 
