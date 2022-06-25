@@ -11,6 +11,8 @@ const CreateOrder = observer(({ inputPhone, inputDate, inputEmail, productCount,
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const regexEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
   const deliveryDate = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
 
   function splitDate(date) {
@@ -22,7 +24,7 @@ const CreateOrder = observer(({ inputPhone, inputDate, inputEmail, productCount,
     <div>
       <button 
         className='order__submit-button'
-        disabled={!(inputPhone && inputDate && inputEmail && priceCount !== 0)} 
+        disabled={!(inputPhone && inputDate && inputEmail.match(regexEmail) && priceCount !== 0)} 
         onClick={handleShow}
       >Купить</button>
       <Modal size="sm" show={show} onHide={handleClose} >
