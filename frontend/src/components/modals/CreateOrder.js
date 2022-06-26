@@ -1,14 +1,19 @@
 import { observer } from 'mobx-react-lite';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { Context } from '../../index';
 import './CreateOrder.css';
+import SuccessOrder from './SuccessOrder';
 
 const CreateOrder = observer(({ inputPhone, inputDate, inputEmail, productCount, priceCount }) => {
 
   const [show, setShow] = useState(false);
+  const [closeSuccessOrder, setCloseSuccessOrder] = useState(true);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setCloseSuccessOrder(!closeSuccessOrder);
+  };
   const handleShow = () => setShow(true);
 
   const regexEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
@@ -47,6 +52,7 @@ const CreateOrder = observer(({ inputPhone, inputDate, inputEmail, productCount,
           </Button>
         </Modal.Footer>
       </Modal>
+      <SuccessOrder closeSuccessOrder={closeSuccessOrder} setCloseSuccessOrder={setCloseSuccessOrder} />
     </div>
   );
 });
