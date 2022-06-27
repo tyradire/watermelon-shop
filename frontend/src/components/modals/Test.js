@@ -10,14 +10,12 @@ const DeleteVendor = ({ show, onHide }) => {
   const {product} = useContext(Context)
 
   const deleteVendorButton = () => {
-    console.log(valueVendor)
     deleteVendor(valueVendor)
     .then(data => {
       product.deleteVendor(valueVendor);
       setValueVendor('');
       onHide();
     })
-    .catch(err => console.log(err))
   }
 
   return (
@@ -39,12 +37,11 @@ const DeleteVendor = ({ show, onHide }) => {
           <Dropdown.Toggle>{product.selectedVendor.name || 'Выберите производителя'}</Dropdown.Toggle>
           <Dropdown.Menu>
             {Object.keys(product.vendors).map(vendor =>
-              <Dropdown.Item onClick={() => setValueVendor(product.vendors[vendor])} key={vendor}>{product.vendors[vendor]}</Dropdown.Item>  
+              <Dropdown.Item onClick={() => setValueVendor(vendor)} key={vendor}>{product.vendors[vendor]}</Dropdown.Item>  
             )}
           </Dropdown.Menu>
         </Dropdown>
       </Form>
-      {valueVendor}
     </Modal.Body>
     <Modal.Footer>
       <Button variant='outline-danger' onClick={onHide}>Закрыть</Button>
