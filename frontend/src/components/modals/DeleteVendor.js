@@ -36,7 +36,7 @@ const DeleteVendor = ({ show, onHide }) => {
     <Modal.Body>
       <Form>
         <Dropdown className='mt-2 mb-2'>
-          <Dropdown.Toggle>{product.selectedVendor.name || 'Выберите производителя'}</Dropdown.Toggle>
+          <Dropdown.Toggle>{valueVendor || 'Выберите производителя'}</Dropdown.Toggle>
           <Dropdown.Menu>
             {Object.keys(product.vendors).map(vendor =>
               <Dropdown.Item onClick={() => setValueVendor(product.vendors[vendor])} key={vendor}>{product.vendors[vendor]}</Dropdown.Item>  
@@ -44,7 +44,6 @@ const DeleteVendor = ({ show, onHide }) => {
           </Dropdown.Menu>
         </Dropdown>
       </Form>
-      {valueVendor}
     </Modal.Body>
     <Modal.Footer>
       <Button variant='outline-danger' onClick={onHide}>Закрыть</Button>
