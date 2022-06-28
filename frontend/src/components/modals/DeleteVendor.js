@@ -1,9 +1,10 @@
+import { observer } from 'mobx-react-lite';
 import React, { useContext, useState } from 'react';
 import { Button, Dropdown, Form, Modal } from 'react-bootstrap';
 import { Context } from '../../index';
 import { deleteVendor } from '../../utils/VendorApi';
 
-const DeleteVendor = ({ show, onHide }) => {
+const DeleteVendor = observer(({ show, onHide }) => {
 
   const [valueVendor, setValueVendor] = useState('');
 
@@ -14,11 +15,14 @@ const DeleteVendor = ({ show, onHide }) => {
     deleteVendor(valueVendor)
     .then(data => {
       product.deleteVendor(valueVendor);
+      product.deleteProductsByVendor(valueVendor);
       setValueVendor('');
       onHide();
     })
     .catch(err => console.log(err))
   }
+
+  console.log(product.vendors)
 
   return (
     <Modal
@@ -51,6 +55,6 @@ const DeleteVendor = ({ show, onHide }) => {
     </Modal.Footer>
   </Modal>
   );
-};
+});
 
 export default DeleteVendor;

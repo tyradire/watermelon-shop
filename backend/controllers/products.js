@@ -12,7 +12,7 @@ const createProduct = (req, res, next) => {
   let fileName = uuid.v4() + '.jpg';
   img.mv(path.resolve(__dirname, '..', 'static', fileName));
   Product.create({name, price, vendorId, info, img: fileName})
-  .then((product) => res.status(200).send({product}))
+  .then((product) => res.status(200).send(product)) //тут убрала скобки у продакта
   .catch((err) => {console.log(err)
     if (err.name === 'ValidationError') next(new CastError('Переданы некорректные данные при создании пользователя'));
     next(err);

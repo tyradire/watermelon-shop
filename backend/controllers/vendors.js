@@ -41,7 +41,9 @@ const deleteVendor = (req, res, next) => {
       where: {name},
     });
   })
-  .then((item) => res.status(200).send({message: 'Вендор удалён'}))
+  .then((item) => {
+    res.status(200).send({message: 'Вендор удалён'})
+  })
 }
 
 module.exports = {
