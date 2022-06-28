@@ -5,7 +5,6 @@ const CastError = require('../errors/CastError');
 const NotFoundError = require('../errors/NotFoundError');
 
 const createProduct = (req, res, next) => {
-  console.log('313', req.body);
   let { 
     name, price, vendorId, info
   } = req.body
