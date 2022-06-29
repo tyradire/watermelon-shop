@@ -11,7 +11,7 @@ const DeleteVendor = observer(({ show, onHide }) => {
   const {product} = useContext(Context)
 
   const deleteVendorButton = () => {
-    console.log(valueVendor)
+
     deleteVendor(valueVendor)
     .then(data => {
       product.deleteVendor(valueVendor);
