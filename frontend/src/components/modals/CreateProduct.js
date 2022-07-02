@@ -25,10 +25,12 @@ const CreateProduct = observer(({ show, onHide }) => {
     formData.append('img', file);
     formData.append('vendorId', product.selectedVendor);
     if (info.length > 0) {formData.append('info', info)};
-    createProduct(formData).then((data) => {
+    createProduct(formData)
+    .then((data) => {
       product.addOneProduct(data)
       onHide()
-    });
+    })
+    .catch(err => console.log(err));
     // getVendors().then(data => product.setVendors(data));
     //createProduct({name, price, vendorId: product.selectedVendor.id}).then(data => onHide())
   }
