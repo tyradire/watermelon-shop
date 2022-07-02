@@ -19,7 +19,7 @@ export default class ProductStore {
   }
 
   addVendor(vendor) {
-    this._vendors[vendor.vendor.id] = vendor.vendor.name;
+    this._vendors[vendor.id] = vendor.name;
   }
 
   setVendors(vendors) {
