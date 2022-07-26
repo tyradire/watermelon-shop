@@ -6,12 +6,15 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  border-bottom: none;
+}
+
+.product-item__card:hover {
+  background: #fff;
   -webkit-box-shadow: 0px 0px 12px 3px rgba(184, 184, 184, 0.5);
   -moz-box-shadow: 0px 0px 12px 3px rgba(184, 184, 184, 0.5);
   box-shadow: 0px 0px 12px 3px rgba(184, 184, 184, 0.5);
-  border-radius: 6px;
-  border-bottom: none;
 }
 
 .product-item__image {
@@ -20,6 +23,7 @@
   border-radius: 6px;
   cursor: pointer;
   margin: 8px 0 4px;
+  border-radius: 50%;
 }
 
 .product-item__info-wrapper {
