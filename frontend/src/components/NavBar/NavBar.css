@@ -64,7 +64,6 @@
 
 .navbar__auth-button path {
   stroke: #589377;
-  transition: .5s;
 }
 
 .navbar__auth-button svg:hover path {
